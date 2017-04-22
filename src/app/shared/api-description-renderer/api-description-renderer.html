@@ -1,0 +1,8 @@
+<div *ngIf="descriptionData?.type === 'description'" >     
+    <div class="description-container">
+        <div class="description-title">{{ descriptionData?.title }}</div>
+        <p class="description-body">
+            {{ descriptionData?.bodyText?.join('\r\n') }}
+        </p>
+    </div>
+</div>

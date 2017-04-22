@@ -1,0 +1,10 @@
+{
+    "apiComponentPresentation": {
+        "componentType": "pageStreams",
+        "shortDescription": "Page streams service can help you to track changes in multiple components the documentation is comming soon"
+    },
+    "apiReference": {
+        "title": "Page streams"
+    },
+    "other": {}
+}

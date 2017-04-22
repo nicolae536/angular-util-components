@@ -1,0 +1,39 @@
+{
+    "apiComponentPresentation": {
+        "componentType": "genericForm",
+        "componentConfiguration": {
+            "serverMap": "definitionExample"
+        },
+        "shortDescription": "All input types exemple"
+    },
+    "apiReference": {
+        "title": "Form Input types",
+        "apiDetails": [
+            {
+                "title": "Input types supported for now",
+                "type": "list",
+                "list": [
+                    "header",
+                    "text",
+                    "number",
+                    "email",
+                    "label",
+                    "password",
+                    "checkbox",
+                    "radiobox",
+                    "slider",
+                    "textarea // it has some problems",
+                    "combobox",
+                    "autocomplete // built in component - waiting for angular material implementation",
+                    "multiselect // 3rd party component - waiting for angular material implementation",
+                    "datepicker // 3rd party component - waiting for angular material implementation",
+                    "timepicker // 3rd party component - waiting for angular material implementation",
+                    "datetimepicker // 3rd party component - waiting for angular material implementation",
+                    "submit // as md-button or md-icon-button",
+                    "reset // as md-button or md-icon-button"
+                ]
+            }
+        ]
+    },
+    "other": {}
+}

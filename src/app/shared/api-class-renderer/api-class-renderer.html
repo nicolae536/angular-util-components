@@ -1,0 +1,21 @@
+<div class="class-definition" *ngIf="classImplementation?.type === 'interface' || classImplementation?.type === 'class'">
+    <div class="class-title">
+        {{classImplementation?.title}}
+    </div>
+    <div class="class-name">
+        <span class="interface">
+            {{classImplementation?.type + ' '}}
+        </span> 
+        <span class="interface-name">
+            {{classImplementation?.classDefinition?.className}}
+        </span> {{' {'}}
+    </div>
+    <div class="class-props" *ngFor="let prop of classImplementation?.classDefinition?.classProps">
+        <span class="class-prop">{{getPropertyValue(prop, 0)}}</span>
+        <span class="class-prop-interface">{{getPropertyValue(prop, 1)}}</span>
+        <span class="class-prop-comment">{{getComment(prop)}}</span>
+    </div>
+    <div class="class-ending">
+        {{'}'}}
+    </div>
+</div>

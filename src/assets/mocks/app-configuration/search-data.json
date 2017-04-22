@@ -1,0 +1,82 @@
+[
+    {
+        "text": "Germany",
+        "capital":"Berlin",
+        "population":"80,854,408",
+        "totalArea":"137,846 Square Miles. 357,022 Square Kilometers",
+        "location":"Central Europe, bordering the Baltic Sea and the North Sea, between the Netherlands and Poland, south of Denmark",
+        "value": 0
+    },
+    {
+        "text": "France",
+        "capital":"Paris",
+        "population":"66,553,766",
+        "totalArea":"248,572 Square Miles. 643,801 Square Kilometers",
+        "location":"metropolitan France: Western Europe, bordering the Bay of Biscay and English Channel, between Belgium and Spain, southeast of the UK; bordering the Mediterranean Sea, between Italy and Spain",
+        "value": 1
+    },
+    {
+        "text": "Romania",
+        "capital":"Bucharest",
+        "population":"21,666,350",
+        "totalArea":"92,043 Square Miles. 238,391 Square Kilometers",
+        "location":"Southeastern Europe, bordering the Black Sea, between Bulgaria and Ukraine",
+        "value": 2
+    },
+    {
+        "text": "Danemark",
+        "capital":"Copenhagen",
+        "population":"5,581,503",
+        "totalArea":"16,639 Square Miles. 43,094 Square Kilometers",
+        "location":"Northern Europe, bordering the Baltic Sea and the North Sea, on a peninsula north of Germany (Jutland); also includes several major islands (Sjaelland, Fyn, and Bornholm)",
+        "value": 3
+    },
+    {
+        "text": "Norway",
+        "capital":"Oslo",
+        "population":"5,207,689",
+        "totalArea":"125,020 Square Miles. 323,802 Square Kilometers",
+        "location":"Northern Europe, bordering the North Sea and the North Atlantic Ocean, west of Sweden",
+        "value": 4
+    },
+    {
+        "text": "China",
+        "capital":"Beijing",
+        "population":"1,367,485,388",
+        "totalArea":"3,705,387 Square Miles. 9,596,961 Square Kilometers",
+        "location":"Eastern Asia, bordering the East China Sea, Korea Bay, Yellow Sea, and South China Sea, between North Korea and Vietnam",
+        "value": 5
+    },
+    {
+        "text": "Rusia",
+        "capital":"Moscow",
+        "population":"142,423,773",
+        "totalArea":"6,601,631 Square Miles. 17,098,242 Square Kilometers",
+        "location":"North Asia bordering the Arctic Ocean, extending from Europe (the portion west of the Urals) to the North Pacific Ocean",
+        "value": 6
+    },
+    {
+        "text": "Poland",
+        "capital":"Warsaw",
+        "population":"38,562,189",
+        "totalArea":"120,728 Square Miles. 312,685 Square Kilometers",
+        "location":"Central Europe, east of Germany",
+        "value": 8
+    },
+    {
+        "text": "Greece",
+        "capital":"Athens",
+        "population":"10,775,643",
+        "totalArea":"50,949 Square Miles. 131,957 Square Kilometers",
+        "location":"Southern Europe, bordering the Aegean Sea, Ionian Sea, and the Mediterranean Sea, between Albania and Turkey",
+        "value": 9
+    },
+    {
+        "text": "Hungary",
+        "capital":"Budapest",
+        "population":"9,897,541",
+        "totalArea":"35,918 Square Miles. 93,028 Square Kilometers",
+        "location":"Central Europe, northwest of Romania",
+        "value": 10
+    }
+]

@@ -1,0 +1,14 @@
+<div class="presentation">
+    <div class="short-title">
+        <span>{{componentPresentationData?.shortDescription}}</span>
+    </div>
+    <div>
+        <div *ngIf="componentPresentationData?.componentType === 'autocomplete'">
+            <autocomplete-example></autocomplete-example>
+        </div>
+        <div *ngIf="componentPresentationData?.componentType === 'genericForm'">
+            <form-example [config]="componentPresentationData?.componentConfiguration"></form-example>
+        </div>
+        <!--<ng-content select="ngt-component-exemple"></ng-content>-->
+    </div>
+</div>

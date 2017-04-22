@@ -1,0 +1,46 @@
+{
+    "apiComponentPresentation": {
+        "componentType": "genericForm",
+        "componentConfiguration": {
+            "serverMap": "validationExample"
+        },
+        "shortDescription": "All form validators"
+    },
+    "apiReference": {
+        "title": "Generic form validators",
+        "apiDetails": [
+            {
+                "title": "IValidator the validator configuration",
+                "type": "interface",
+                "classDefinition": {
+                    "className": "IValidator",
+                    "classProps": [
+                        "validator: string; // if is a validator that we already have",
+                        "validatorValue: string; // for min and max values",
+                        "errorToken?: string; // used for extracting a translation",
+                        "errorMessage: string; // TODO check if this is needed"
+                    ]
+                }
+            },
+            {
+                "title": "This is the list possible values for validator property",
+                "type": "list",
+                "list": [
+                    "required",
+                    "minLength",
+                    "maxLength",
+                    "pattern //if you want to pass your own regex",
+                    "email",
+                    "text",
+                    "number",
+                    "password",
+                    "minValue",
+                    "maxValue",
+                    "integer",
+                    "maxDecimalLength"
+                ]
+            }
+        ]
+    },
+    "other": {}
+}

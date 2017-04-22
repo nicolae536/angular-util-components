@@ -1,0 +1,229 @@
+{
+    "name": "definitionExample",
+    "rows": [
+        {
+            "elements": [
+                {
+                    "type": "reset",
+                    "buttonType": "md-icon-button",
+                    "icon": "close",
+                    "position": "right"
+                },
+                {
+                    "type": "submit",
+                    "buttonType": "md-icon-button",
+                    "icon": "check_circle",
+                    "position": "left"
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "header",
+                    "name": "HEADER",
+                    "value": "Input types exemple",
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "text",
+                    "name": "TEXT_ELEMENT",
+                    "placeholder": "Text element exemple",
+                    "width": 1
+                },
+                {
+                    "type": "number",
+                    "name": "NUMBER_ELEMENT",
+                    "placeholder": "Number element exemple",
+                    "width": 1
+                },
+                {
+                    "type": "email",
+                    "name": "EMAIL_ELEMENT",
+                    "placeholder": "Email element exemple",
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "label",
+                    "name": "LABEL_ELEMENT",
+                    "placeholder": "Label element",
+                    "width": 1
+                },
+                {
+                    "type": "password",
+                    "name": "PASSWORD_ELEMENT",
+                    "placeholder": "Password element",
+                    "width": 1
+                },
+                {
+                    "type": "checkbox",
+                    "name": "CHECKBOX_ELEMENT",
+                    "placeholder": "Checkbox element",
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "slider",
+                    "name": "SLIDER_ELEMENT",
+                    "placeholder": "Slider element exemple",
+                    "width": 1
+                },
+                {
+                    "type": "combobox",
+                    "name": "COMBO_BOX_ELEMENT",
+                    "placeholder": "Combobox",
+                    "valueField": "value",
+                    "displayFields": [
+                        "text"
+                    ],
+                    "dataSource": [
+                        {
+                            "text": "Option 1",
+                            "value": "Rand1",
+                            "sort": 1
+                        },
+                        {
+                            "text": "Super combo",
+                            "value": "Rand2",
+                            "sort": 12
+                        },
+                        {
+                            "text": "Random combo",
+                            "value": "Rand3",
+                            "sort": 3
+                        },
+                        {
+                            "text": "Test combo",
+                            "value": "Rand4",
+                            "sort": 3
+                        },
+                        {
+                            "text": "Octopus combo",
+                            "value": "Rand5",
+                            "sort": 3
+                        }
+                    ],
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "autocomplete",
+                    "name": "AUTOCOMPLETE_ELEMENT",
+                    "placeholder": "Country",
+                    "config": {
+                        "searchConfig": {
+                            "throttleTimer": 300,
+                            "minSearchQueryLength": 3
+                        },
+                        "activateOnFocus": true,
+                        "statesMessages": {
+                            "initialMessage": "Autocomplete",
+                            "typingMessage": "Typing...",
+                            "searchingMessage": "Loading data...",
+                            "invalidSearchLengthMessage": "Min 3 chanracters",
+                            "noResultsFoundMessage": "No suggestions"
+                        },
+                        "listMapping": {
+                            "valueField": "value",
+                            "visibleField": "text"
+                        }
+                    },
+                    "width": 1
+                },
+                {
+                    "type": "datepicker",
+                    "name": "TEST_DATEPICKER",
+                    "placeholder": "Multi pizza",
+                    "format": "DD/MM/YYYY",
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "multiselect",
+                    "name": "MULTISELECT_EXEMPLE",
+                    "placeholder": "Multiselect exemple",
+                    "valueField": "value",
+                    "visibleField": "text",
+                    "dataSource": [
+                        {
+                            "text": "Quatro stagioni",
+                            "value": "Rand1",
+                            "sort": 1
+                        },
+                        {
+                            "text": "Quatro formagi",
+                            "value": "Rand2",
+                            "sort": 12
+                        },
+                        {
+                            "text": "Prosciuto e funghi",
+                            "value": "Rand3",
+                            "sort": 3
+                        },
+                        {
+                            "text": "Quatro stagioni1",
+                            "value": "Rand11",
+                            "sort": 1
+                        },
+                        {
+                            "text": "Quatro formagi2",
+                            "value": "Rand22",
+                            "sort": 12
+                        },
+                        {
+                            "text": "Prosciuto e funghi3",
+                            "value": "Rand33",
+                            "sort": 3
+                        }
+                    ],
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "timepicker",
+                    "name": "TIMEPICKER_EXEMPLE",
+                    "placeholder": "Timepicker exemple",
+                    "format": "HH:MM",
+                    "width": 1
+                },
+                {
+                    "type": "datetimepicker",
+                    "name": "DATEPICKER_EXEMPLE",
+                    "placeholder": "Datepicker exemple",
+                    "format": "DD/MM/YYYY HH:mm",
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "textarea",
+                    "name": "TEXTAREA_ELEMENT",
+                    "placeholder": "Textarea element exemple",
+                    "width": 1
+                }
+            ]
+        }
+    ]
+}

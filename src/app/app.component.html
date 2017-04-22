@@ -1,3 +1,8 @@
-<h1>
-  {{title}}
-</h1>
+<md-toolbar class="app-header" color="primary">
+    <a class="header-title" md-button routerLink="/"><md-icon>developer_board</md-icon> Ng Tools</a>
+    <a class="header-title" md-button routerLink="/api/components/autocomplete">Api</a>
+    <a class="header-title" md-button routerLink="/">Contributing</a>
+</md-toolbar>
+<div class="app-content">
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,32 @@
+<div class="api-reference-reader"> 
+    <div class="header">
+        <span>{{data?.title}}</span>
+    </div>
+    <div class="table-container" *ngIf="data?.apiPresentation">
+        <ng-table 
+          #ngTableReference
+          [config]="config" 
+          [columns]="data?.apiPresentation?.headerDefinition"
+          [rows]="data?.apiPresentation?.tableDefinition">
+        </ng-table>
+    </div>
+    <div class="api-details-container"  *ngIf="data?.apiDetails">
+        <div *ngFor="let item of data?.apiDetails">
+            <api-class-renderer 
+                *ngIf="item?.type === 'interface' || item?.type === 'class'"
+                class="api-interface"  
+                [classImplementation]="item">
+            </api-class-renderer>
+            <api-list-renderer
+                *ngIf="item?.type === 'list'"
+                class="api-list" 
+                [apiData]="item">
+            </api-list-renderer>            
+            <api-description-renderer 
+                *ngIf="item?.type === 'description'"
+                class="api-description"
+                [descriptionData]="item">
+            </api-description-renderer>
+        </div>
+    </div>
+</div>

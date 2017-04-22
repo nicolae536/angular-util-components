@@ -1,0 +1,147 @@
+{
+    "apiComponentPresentation": {
+        "componentType": "autocomplete",
+        "shortDescription": "Autocomplete compont can be used to get autocomplete from your server classDefinition"
+    },
+    "apiReference": {
+        "title": "Autocomplete component",
+        "apiPresentation": {
+            "headerDefinition": [
+                {
+                    "name": "field",
+                    "title": "Field"
+                },
+                {
+                    "name": "type",
+                    "title": "Type"
+                },
+                {
+                    "name": "description",
+                    "title": "Description"
+                }
+            ],
+            "tableDefinition": [
+                {
+                    "field": "iconType",
+                    "type": "@Input",
+                    "description": "'prefix', 'suffix' or 'placeholder-prefix', 'placeholder-suffix'"
+                },
+                {
+                    "field": "icon",
+                    "type": "@Input",
+                    "description": "md-icon"
+                },
+                {
+                    "field": "hint",
+                    "type": "@Input",
+                    "description": "{ align: 'start' | 'end' value: string}"
+                },
+                {
+                    "field": "errors",
+                    "type": "@Input",
+                    "description": "Used in ngt-generic-form classDefinition (true if the form control has errors)"
+                },
+                {
+                    "field": "placeholder",
+                    "type": "@Input",
+                    "description": "string"
+                },
+                {
+                    "field": "autocompleteConfigurtation",
+                    "type": "@Input",
+                    "description": "AutocompleteConfiguration described bellow"
+                },
+                {
+                    "field": "backend",
+                    "type": "@Input",
+                    "description": "Service which implements IBackend"
+                },
+                {
+                    "field": "onSelectionChange",
+                    "type": "@Output",
+                    "description": "Emits the new selected option metadata"
+                },
+                {
+                    "field": "onAutocompleteStateChange",
+                    "type": "@Output",
+                    "description": "Emits the searching state SearchState"
+                },
+                {
+                    "field": "blur",
+                    "type": "@Output",
+                    "description": "blur event"
+                },
+                {
+                    "field": "focus",
+                    "type": "@Output",
+                    "description": "focus event"
+                }
+            ]
+        },
+        "apiDetails": [
+            {
+                "title": "AutocompleteConfiguration",
+                "type": "interface",
+                "classDefinition": {
+                    "className": "AutocompleteConfiguration",
+                    "classProps": [
+                        "searchConfig: ISearchConfig;",
+                        "activateOnFocus: boolean;",
+                        "statesMessages: IStateMessage;",
+                        "listMapping: IListMap;"
+                    ]
+                }
+            },
+            {
+                "title": "ISearchConfig",
+                "type": "interface",
+                "classDefinition": {
+                    "className": "ISearchConfig",
+                    "classProps": [
+                        "throttleTimer: number;",
+                        "minSearchQueryLength: number;",
+                        "cutomConfig: any; // for your backend implementatin"
+                    ]
+                }
+            },
+            {
+                "title": "IStateMessage",
+                "type": "interface",
+                "classDefinition": {
+                    "className": "IStateMessage",
+                    "classProps": [
+                        "initialMessage: string;",
+                        "typingMessage: string;",
+                        "searchingMessage: string;",
+                        "invalidSearchLengthMessage: string;",
+                        "noResultsFoundMessage: string;"
+                    ]
+                }
+            },
+            {
+                "title": "IBackend",
+                "type": "interface",
+                "classDefinition": {
+                    "className": "IBackend",
+                    "classProps": [
+                        "performSearch(configuration: ISearchConfig, searchQuery: string, customConfig?: any): Observable<any>;"
+                    ]
+                }
+            },
+            {
+                "title": "SearchState",
+                "type": "interface",
+                "classDefinition": {
+                    "className": "SearchState ",
+                    "classProps": [
+                        "state: string;",
+                        "searchQuery: any;",
+                        "responseObject: any;",
+                        "isQueryLengthValid: boolean;"
+                    ]
+                }
+            }
+        ]
+    },
+    "other": {}
+}

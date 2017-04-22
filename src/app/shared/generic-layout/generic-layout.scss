@@ -1,0 +1,64 @@
+@import '../../styles/app-theme';
+
+generic-layout {
+    .layout-header {
+        padding: 50px 70px;
+        display: flex;
+        align-items: center;
+        background: $left-menu-heading-color;
+
+        .menu-button {
+            margin-right: 10px;
+            color: $primary;
+        }
+
+        .header-text {
+            font-size: 2em;
+            color: $primary;
+            text-transform: capitalize;
+        }
+    }
+
+    .layout-presentation {
+        padding: 50px;
+
+        md-tab-group {
+            .mat-tab-body-wrapper {
+
+                .mat-tab-body-content {
+                    overflow-x: auto;
+                    padding-top: 1em;
+
+                    .other-text {
+                        font-size: 2em;
+                        padding: 1em;
+                    }
+                }
+            }
+        }
+    }
+
+    &.mobile {
+        .layout-header {
+            padding: 15px 20px;
+
+            .header-text {
+                font-size: 1.2em;
+            }
+        }
+
+        .layout-presentation {
+            padding: 10px;
+        }
+    }
+
+    &.tablet {
+        .layout-header {
+            padding: 25px;
+        }
+
+        .layout-presentation {
+            padding: 25px 35px;
+        }
+    }
+}

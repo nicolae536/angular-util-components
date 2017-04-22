@@ -1,0 +1,41 @@
+api-class-renderer {
+    .class-definition {
+        padding: 1em;
+        background-color: #424242;
+        color: white;
+        margin: 1em 0;
+
+        .class-name {
+            .interface {
+                color: #569CD6;
+            }
+
+            .interface-name {
+                color: #4EC9B0;
+            }
+        }
+        
+        .class-title {
+            padding-bottom: 0.5em;
+            font-size: 1.5em;
+        }
+
+        .class-props {
+            padding-left: 2em;
+            padding-top: 0.3em;
+            padding-bottom: 0.3em;
+
+            .class-prop {
+                color: #9CDCFE;
+            }
+
+            .class-prop-interface {
+                color: #4EC9B0;
+            }
+
+            .class-prop-comment{
+                color: #608B4E
+            }
+        }
+    }
+}

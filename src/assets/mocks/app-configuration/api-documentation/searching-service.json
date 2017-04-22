@@ -1,0 +1,10 @@
+{
+    "apiComponentPresentation": {
+        "componentType": "autocomplete",
+        "shortDescription": "Searching service is used in autocomplete component and it create and observable using search cryterias"
+    },
+    "apiReference": {
+        "title": "Searching service"
+    },
+    "other": {}
+}

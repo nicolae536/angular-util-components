@@ -1,0 +1,261 @@
+{
+    "name": "runtimeLinks",
+    "rows": [
+        {
+            "elements": [
+                {
+                    "type": "reset",
+                    "buttonType": "md-icon-button",
+                    "icon": "close",
+                    "position": "right"
+                },
+                {
+                    "type": "submit",
+                    "buttonType": "md-icon-button",
+                    "icon": "check_circle",
+                    "position": "left"
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "header",
+                    "name": "HEADER",
+                    "value": "Hello Form",
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "combobox",
+                    "name": "TEST_COMBO_BOX",
+                    "placeholder": "Pizza",
+                    "valueField": "value",
+                    "validation": [
+                        {
+                            "validator": "required",
+                            "errorMessage": "required",
+                            "errorToken": "requiredToken"
+                        }
+                    ],
+                    "displayFields": [
+                        "text"
+                    ],
+                    "dataSource": [
+                        {
+                            "text": "Quatro stagioni",
+                            "value": "Rand1",
+                            "tomatoSauce": true,
+                            "mozzarella": true,
+                            "corn": true,
+                            "description": "Quatro stagioni has 4 types of meat",
+                            "sort": 1
+                        },
+                        {
+                            "text": "Quatro formagi",
+                            "value": "Rand2",
+                            "tomatoSauce": false,
+                            "mozzarella": true,
+                            "corn": false,
+                            "description": "Quatro formagi has 4 types of cheese",
+                            "sort": 12
+                        },
+                        {
+                            "text": "Prosciuto e funghi",
+                            "value": "Rand3",
+                            "tomatoSauce": true,
+                            "mozzarella": true,
+                            "corn": false,
+                            "description": "Prosciuto e funghi has feta chese and prosciuto",
+                            "sort": 3
+                        },
+                        {
+                            "text": "Pizza studente",
+                            "value": "Rand4",
+                            "tomatoSauce": false,
+                            "mozzarella": false,
+                            "corn": true,
+                            "description": "Pizza studente created for students",
+                            "sort": 3
+                        },
+                        {
+                            "text": "Pizza Capriciosa",
+                            "value": "Rand5",
+                            "tomatoSauce": true,
+                            "mozzarella": true,
+                            "corn": true,
+                            "description": "Pizza Capriciosa is our speciality",
+                            "sort": 3
+                        },
+                        {
+                            "text": "Pizza Inferno",
+                            "tomatoSauce": true,
+                            "mozzarella": true,
+                            "corn": true,
+                            "description": "Pizza Inferno is very spicy",
+                            "value": "Rand6",
+                            "sort": 3
+                        }
+                    ],
+                    "runtimelinks": [
+                        {
+                            "control": "MOZZARELLA",
+                            "fieldName": "mozzarella"
+                        },
+                        {
+                            "control": "TOMATO_SOUCE",
+                            "fieldName": "tomatoSauce"
+                        },
+                        {
+                            "control": "CORN",
+                            "fieldName": "corn"
+                        },
+                        {
+                            "control": "DESCRIPTION",
+                            "fieldName": "description"
+                        },
+                        {
+                            "control": "NOTES",
+                            "validation": [
+                                {
+                                    "validator": "required",
+                                    "errorMessage": "requiredMessage",
+                                    "errorToken": "required"
+                                }
+                            ]
+                        }
+                    ],
+                    "width": 1
+                },
+                {
+                    "type": "text",
+                    "name": "DESCRIPTION",
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "checkbox",
+                    "name": "MOZZARELLA",
+                    "placeholder": "Mozzarella",
+                    "width": 1
+                },
+                {
+                    "type": "checkbox",
+                    "name": "TOMATO_SOUCE",
+                    "placeholder": "Tomato souce",
+                    "width": 1
+                },
+                {
+                    "type": "checkbox",
+                    "name": "CORN",
+                    "placeholder": "Corn",
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "text",
+                    "name": "NOTES",
+                    "placeholder": "User notes",
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "elements": [
+                        {
+                            "type": "header",
+                            "name": "HEADER",
+                            "value": "Contry informations",
+                            "width": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "autocomplete",
+                    "name": "AUTOCOMPLETE_ELEMENT",
+                    "placeholder": "Country",
+                    "config": {
+                        "searchConfig": {
+                            "throttleTimer": 300,
+                            "minSearchQueryLength": 3
+                        },
+                        "activateOnFocus": true,
+                        "statesMessages": {
+                            "initialMessage": "",
+                            "typingMessage": "Typing...",
+                            "searchingMessage": "Loading data...",
+                            "invalidSearchLengthMessage": "Min 3 chanracters",
+                            "noResultsFoundMessage": "No suggestions"
+                        },
+                        "listMapping": {
+                            "valueField": "value",
+                            "visibleField": "text"
+                        }
+                    },
+                    "runtimelinks": [
+                        {
+                            "control": "CAPITAL",
+                            "fieldName": "capital"
+                        },
+                        {
+                            "control": "POPULATION",
+                            "fieldName": "population"
+                        },
+                        {
+                            "control": "TOTAL_AREA",
+                            "fieldName": "totalArea"
+                        },
+                        {
+                            "control": "LOCATION",
+                            "fieldName": "location"
+                        }
+                    ],
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "label",
+                    "name": "CAPITAL",
+                    "placeholder": "Capital",
+                    "width": 1
+                },
+                {
+                    "type": "label",
+                    "name": "POPULATION",
+                    "placeholder": "Population",
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "label",
+                    "name": "TOTAL_AREA",
+                    "placeholder": "Total area",
+                    "width": 1
+                },
+                {
+                    "type": "label",
+                    "name": "LOCATION",
+                    "placeholder": "Location",
+                    "width": 1
+                }
+            ]
+        }
+    ]
+}

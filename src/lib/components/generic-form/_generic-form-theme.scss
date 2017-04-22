@@ -1,0 +1,204 @@
+@mixin form-definition($theme) {
+    $primary: mat-color(map-get($theme, primary));
+    $warn:  mat-color(map-get($theme, warn));
+    $foreground: map-get($theme, foreground);
+    $hint-color: mat-color($foreground, hint-text);
+
+    .form-row {
+        .form-element {
+
+            .default-header {
+                background-color: $primary;
+            }
+
+            md-hint,
+            .error-message {
+                font-size: 0.75em;
+                color: $hint-color;
+            }
+
+            .combobox-container {
+                // hack to fix combobox
+                &.ng-touched.ng-invalid~.error-message{
+                    color: $warn;
+                }
+            }
+
+            .datepicker-container {
+                md2-datepicker {
+                    &:focus {
+                        .md2-datepicker-trigger {
+                            .md2-datepicker-input {
+                                border-bottom: 1px solid $primary;
+                            }
+                            .md2-datepicker-placeholder {
+                                color: $primary;
+                            }
+                            svg {
+                                path {
+                                    color: $primary;
+                                }
+                            }
+                        }
+                    }
+
+                    .md2-datepicker-panel {
+                            .md2-datepicker-header {
+                                background: $primary;
+                            }
+
+                            .md2-datepicker-content {
+                                .md2-datepicker-actions .md2-button,
+                                .today {
+                                    color: $primary;
+                                }
+
+                                .md2-calendar-years {
+                                    .md2-calendar-years-content {
+                                        .md2-calendar-year.selected {
+                                            color: $primary;
+                                        }
+                                    }
+                                }
+
+                                .md2-datepicker-clock {
+                                    .md2-clock-hand {
+                                        svg {
+                                            g {
+                                                line {
+                                                    stroke: $primary;
+                                                }
+                                                circle {
+                                                    fill: $primary;
+                                                    opacity: 0.50;
+                                                    filter: alpha(opacity=50);
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .md2-clock-hours {
+                                        .md2-clock-hour:hover, .md2-clock-minute:hover {
+                                            background: $primary;
+                                            opacity: 0.50;
+                                            filter: alpha(opacity=50);
+                                            color: #fff;
+                                        }
+                                    }
+                                    .md2-clock-minutes {
+                                        .md2-clock-minute {
+                                            &:hover {
+                                                background: $primary;
+                                                opacity: 0.50;
+                                                filter: alpha(opacity=50);
+                                                color: #fff;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .md2-calendar-day.selected {
+                                    color:#fff;
+                                    background: $primary;
+                                }
+
+                                .md2-datepicker-actions {
+                                    display: none;
+                                }
+                            }
+                        }
+
+                    &.ng-touched.ng-invalid~.error-message{
+                        color: $warn;
+                    }
+                }
+            }
+
+            .multiselect-container {
+                md2-multiselect {
+                    &:focus {
+                        .md2-multiselect-container {
+                            border-bottom: 1px solid $primary;
+
+                            .md2-multiselect-placeholder {
+                                color: $primary;
+                            }
+                        }
+                    }
+
+                    .md2-multiselect-menu {
+                        .md2-option {
+                            &.active {
+                                color: $primary;
+                                .md2-option-icon {
+                                    border-color: $primary;
+                                }
+                            }
+                        }
+                    }
+
+                    &.ng-touched.ng-invalid~.error-message{
+                        color: $warn;
+                    }
+                }
+            }
+        }
+
+        .backend-error,
+        .ng-touched.ng-invalid:not(form){
+            .mat-input-underline {
+                border-color: $warn;
+            }
+
+            .mat-input-placeholder {
+                color: $warn;
+                &:not(.mat-empty),
+                &.mat-focused {
+                    color: $warn;
+                }
+            }
+
+            .mat-input-ripple,
+            md-ink-bar {
+                background: $warn;
+            }
+
+            .md2-datepicker-trigger {
+                .md2-datepicker-input {
+                    .md2-datepicker-placeholder {
+                        color: $warn;
+                    }
+                    svg {
+                        path {
+                            color: $warn;
+                        }
+                    }
+                }
+                .md2-datepicker-calendar-icon {
+                    svg {
+                        path {
+                            color: $warn;
+                        }
+                    }
+                }
+            }
+
+            .md2-multiselect-container {
+                border-bottom: 1px solid $warn;
+
+                .md2-multiselect-placeholder {
+                    color: $warn;
+                }
+                svg {
+                    path {
+                        color: $warn;
+                    }
+                }
+            }
+
+            .error-message,
+            .mat-input-suffix {
+                color: $warn;
+            }
+        }
+    }
+}

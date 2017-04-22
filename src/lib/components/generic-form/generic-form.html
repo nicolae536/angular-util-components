@@ -1,0 +1,400 @@
+<form novalidate *ngIf="ngFormGroup"
+      autocomplete="off"
+      class="ngt-generic-form-layout {{genericFormDefinition.theme ? 'md-' + genericFormDefinition.theme + ' ' : ''}}"
+      [class.default-theme]="useDefaultTheme"
+      [name]="genericFormDefinition.name"
+      [formGroup]="ngFormGroup"
+      (ngSubmit)="onSubmit($event)">
+    <!--in case autocomplete="off" is not working try to use autocomplete="nope"-->
+    <div *ngFor="let row of genericFormDefinition.rows" class="form-row {{row.class || ''}}">
+        <div *ngFor="let field of row.elements" class="form-element size{{field.width || 0}} {{field.position}}"
+             [ngSwitch]="field.type">
+
+            <ng-template [ngSwitchCase]="'text'">
+                <md-input-container class="{{field?.class || ''}}"
+                                    [class.backend-error]="ngFormGroup?.controls[field.name]?.errors">
+                    <input mdInput [type]="field.type" [formControlName]="field.name"/>
+                    <md-placeholder *ngIf="field?.placeholder || ('' +field?.iconType).indexOf('placeholder') !== -1">
+                        <i class="material-icons app-input-icon" *ngIf="field?.iconType === 'placeholder-prefix'">{{field.icon}}</i>
+                        {{field.placeholder}}
+                        <i class="material-icons app-input-icon" *ngIf="field?.iconType === 'placeholder-suffix'">{{field.icon}}</i>
+                    </md-placeholder>
+                    <span mdPrefix>
+						<md-icon *ngIf="field?.iconType === 'prefix'">field.icon</md-icon>
+					</span>
+                    <span mdSuffix>
+						<md-icon *ngIf="field?.iconType === 'suffix'">field.icon</md-icon>
+					</span>
+                    <md-hint [@fieldHintAnimation]
+                             *ngIf="field?.hint && !ngFormGroup?.controls[field?.name]?.errors" [align]="field?.hint?.align || 'start'">
+                        {{field.hint.value}}
+                    </md-hint>
+                    <md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field?.name]?.errors" [align]="'start'">
+                        {{getTranslatedError(field, ngFormGroup.controls[field?.name])}}
+                    </md-hint>
+                </md-input-container>
+            </ng-template>
+
+            <ng-template [ngSwitchCase]="'number'">
+                <md-input-container class="{{field?.class || ''}}"
+                                    [class.backend-error]="ngFormGroup?.controls[field.name]?.errors">
+                    <input mdInput [type]="'text'" [formControlName]="field.name"/>
+                    <md-placeholder *ngIf="field?.placeholder || ('' +field?.iconType).indexOf('placeholder') !== -1">
+                        <i class="material-icons app-input-icon" *ngIf="field?.iconType === 'placeholder-prefix'">{{field.icon}}</i>
+                        {{field.placeholder}}
+                        <i class="material-icons app-input-icon" *ngIf="field?.iconType === 'placeholder-suffix'">{{field.icon}}</i>
+                    </md-placeholder>
+                    <span mdPrefix>
+						<md-icon *ngIf="field?.iconType === 'prefix'">field.icon</md-icon>
+					</span>
+                    <span mdSuffix>
+						<md-icon *ngIf="field?.iconType === 'suffix'">field.icon</md-icon>
+					</span>
+                    <md-hint [@fieldHintAnimation]
+                             *ngIf="field?.hint && !ngFormGroup?.controls[field?.name]?.errors" [align]="field?.hint?.align || 'start'">
+                        {{field.hint.value}}
+                    </md-hint>
+                    <md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field?.name]?.errors" [align]="'start'">
+                        {{getTranslatedError(field, ngFormGroup.controls[field?.name])}}
+                    </md-hint>
+                </md-input-container>
+            </ng-template>
+
+            <ng-template [ngSwitchCase]="'email'">
+                <md-input-container class="{{field?.class || ''}}"
+                                    [class.backend-error]="ngFormGroup?.controls[field.name]?.errors">
+                    <input mdInput [type]="field.type" [formControlName]="field.name"/>
+                    <md-placeholder *ngIf="field?.placeholder || ('' +field?.iconType).indexOf('placeholder') !== -1">
+                        <i class="material-icons app-input-icon" *ngIf="field?.iconType === 'placeholder-prefix'">{{field.icon}}</i>
+                        {{field.placeholder}}
+                        <i class="material-icons app-input-icon" *ngIf="field?.iconType === 'placeholder-suffix'">{{field.icon}}</i>
+                    </md-placeholder>
+                    <span mdPrefix>
+						<md-icon *ngIf="field?.iconType === 'prefix'">field.icon</md-icon>
+					</span>
+                    <span mdSuffix>
+						<md-icon *ngIf="field?.iconType === 'suffix'">field.icon</md-icon>
+					</span>
+                    <md-hint [@fieldHintAnimation]
+                             *ngIf="field?.hint && !ngFormGroup?.controls[field?.name]?.errors" [align]="field?.hint?.align || 'start'">
+                        {{field.hint.value}}
+                    </md-hint>
+                    <md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field?.name]?.errors" [align]="'start'">
+                        {{getTranslatedError(field, ngFormGroup.controls[field?.name])}}
+                    </md-hint>
+                </md-input-container>
+            </ng-template>
+
+            <ng-template [ngSwitchCase]="'label'">
+                <md-input-container class="{{field?.class || ''}}"
+                                    [class.backend-error]="ngFormGroup?.controls[field.name]?.errors">
+                    <input mdInput [type]="field.type" [formControlName]="field.name"/>
+                    <md-placeholder *ngIf="field?.placeholder || ('' +field?.iconType).indexOf('placeholder') !== -1">
+                        <i class="material-icons app-input-icon" *ngIf="field?.iconType === 'placeholder-prefix'">{{field.icon}}</i>
+                        {{field.placeholder}}
+                        <i class="material-icons app-input-icon" *ngIf="field?.iconType === 'placeholder-suffix'">{{field.icon}}</i>
+                    </md-placeholder>
+                    <span mdPrefix>
+						<md-icon *ngIf="field?.iconType === 'prefix'">field.icon</md-icon>
+					</span>
+                    <span mdSuffix>
+						<md-icon *ngIf="field?.iconType === 'suffix'">field.icon</md-icon>
+					</span>
+                    <md-hint [@fieldHintAnimation]
+                             *ngIf="field?.hint && !ngFormGroup?.controls[field?.name]?.errors" [align]="field?.hint?.align || 'start'">
+                        {{field.hint.value}}
+                    </md-hint>
+                    <md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field?.name]?.errors" [align]="'start'">
+                        {{getTranslatedError(field, ngFormGroup.controls[field?.name])}}
+                    </md-hint>
+                </md-input-container>
+            </ng-template>
+
+            <ng-template [ngSwitchCase]="'password'">
+                <md-input-container class="{{field?.class || ''}}"
+                                    [class.backend-error]="ngFormGroup?.controls[field.name]?.errors">
+                    <input mdInput [type]="field.type" [formControlName]="field.name"/>
+                    <md-placeholder *ngIf="field?.placeholder || ('' +field?.iconType).indexOf('placeholder') !== -1">
+                        <i class="material-icons app-input-icon" *ngIf="field?.iconType === 'placeholder-prefix'">{{field.icon}}</i>
+                        {{field.placeholder}}
+                        <i class="material-icons app-input-icon" *ngIf="field?.iconType === 'placeholder-suffix'">{{field.icon}}</i>
+                    </md-placeholder>
+                    <span mdPrefix>
+						<md-icon *ngIf="field?.iconType === 'prefix'">field.icon</md-icon>
+					</span>
+                    <span mdSuffix>
+						<md-icon *ngIf="field?.iconType === 'suffix'">field.icon</md-icon>
+					</span>
+                    <md-hint [@fieldHintAnimation]
+                             *ngIf="field?.hint && !ngFormGroup?.controls[field?.name]?.errors" [align]="field?.hint?.align || 'start'">
+                        {{field.hint.value}}
+                    </md-hint>
+                    <md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field?.name]?.errors" [align]="'start'">
+                        {{getTranslatedError(field, ngFormGroup.controls[field?.name])}}
+                    </md-hint>
+                </md-input-container>
+            </ng-template>
+
+            <ng-template [ngSwitchCase]="'checkbox'">
+                <md-checkbox
+                        [disabled]="field.disabled"
+                        [name]="field.name"
+                        [checked]="field.value === 'checked' ? true : false"
+                        [formControlName]="field.name"
+                        [class.backend-error]="ngFormGroup?.controls[field.name]?.errors">
+                    {{field.placeholder}}
+                </md-checkbox>
+                <md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">
+                    {{getTranslatedError(field, ngFormGroup.controls[field.name])}}
+                </md-hint>
+            </ng-template>
+
+            <ng-template [ngSwitchCase]="'radiobox'">
+                <div class="selectbox {{field.class || ''}}" [class.backend-error]="ngFormGroup?.controls[field.name]?.errors">
+                    <md-radio-group [formControlName]="field.name">
+                        <md-radio-button *ngFor="let radio of field.radioButtons; let i = index" [value]="radio.value"
+                                         [checked]="radio.checked"
+                                         [class]="radio.class"
+                                         [name]="field.name">
+                            {{radio.placeholder}}
+                        </md-radio-button>
+                    </md-radio-group>
+                    <md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">
+                        {{getTranslatedError(field, ngFormGroup.controls[field.name])}}
+                    </md-hint>
+                </div>
+            </ng-template>
+
+            <ng-template [ngSwitchCase]="'slider'">
+                <md-slide-toggle
+                        class="mat-{{color || ''}} {{field.class || ''}}"
+                        [name]="field.name"
+                        [attr.color]="color"
+                        [formControlName]="field.name"
+                        [class.backend-error]="ngFormGroup?.controls[field.name]?.errors">
+                    {{field.placeholder}}
+                </md-slide-toggle>
+                <md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">
+                    {{getTranslatedError(field, ngFormGroup.controls[field.name])}}
+                </md-hint>
+            </ng-template>
+
+            <ng-template [ngSwitchCase]="'textarea'">
+                <md-input-container class="{{field?.class || ''}}"
+                                    [class.backend-error]="ngFormGroup?.controls[field.name]?.errors">
+                    <textarea mdInput [formControlName]="field.name"></textarea>
+                    <md-placeholder *ngIf="field?.placeholder || ('' +field?.iconType).indexOf('placeholder') !== -1">
+                        <i class="material-icons app-input-icon" *ngIf="field?.iconType === 'placeholder-prefix'">{{field.icon}}</i>
+                        {{field.placeholder}}
+                        <i class="material-icons app-input-icon" *ngIf="field?.iconType === 'placeholder-suffix'">{{field.icon}}</i>
+                    </md-placeholder>
+                    <span mdPrefix>
+						<md-icon *ngIf="field?.iconType === 'prefix'">field.icon</md-icon>
+					</span>
+                    <span mdSuffix>
+						<md-icon *ngIf="field?.iconType === 'suffix'">field.icon</md-icon>
+					</span>
+                    <md-hint [@fieldHintAnimation]
+                             *ngIf="field?.hint && !ngFormGroup?.controls[field?.name]?.errors"
+                             [align]="field?.hint?.align || 'start'">
+                        {{field.hint.value}}
+                    </md-hint>
+                    <md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field?.name]?.errors" [align]="'start'">
+                        {{getTranslatedError(field, ngFormGroup.controls[field?.name])}}
+                    </md-hint>
+                </md-input-container>
+            </ng-template>
+
+            <ng-template [ngSwitchCase]="'combobox'">
+                <div class="combobox-container">
+                    <md-select class="{{field.class || ''}}"
+                               [placeholder]="field.placeholder"
+                               [formControlName]="field.name"
+                               [class.backend-error]="ngFormGroup?.controls[field.name]?.errors">
+                        <md-option *ngFor="let option of field.dataSource"
+                                   [value]="option[field.valueField]"
+                                   (click)="select(field, option)">
+                            {{ getDisplayField(field, option) }}
+                        </md-option>
+                    </md-select>
+                    <md-hint [@fieldHintAnimation] *ngIf="field.hint && !ngFormGroup?.controls[field.name]?.errors" [align]="field.hint.align || 'start'">
+                        {{field.hint.value}}
+                    </md-hint>
+                    <md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">
+                        {{getTranslatedError(field, ngFormGroup.controls[field.name])}}
+                    </md-hint>
+                </div>
+            </ng-template>
+
+            <!--<ng-template [ngSwitchCase]="'autocomplete'">-->
+                <!--<ngt-autocomplete class="{{field.class || ''}}"-->
+                                  <!--[placeholder]="field.placeholder"-->
+                                  <!--[iconType]="field.iconType"-->
+                                  <!--[icon]="field.icon"-->
+                                  <!--[hint]="field.hint"-->
+                                  <!--[errors]="!!ngFormGroup?.controls[field.name]?.errors"-->
+                                  <!--[backend]="dataServices[field.name]"-->
+                                  <!--[autocompleteConfigurtation]="field.config"-->
+                                  <!--[formControlName]="field.name"-->
+                                  <!--(onSelectionChange)="select(field, $event)">-->
+                    <!--&lt;!&ndash;TODO hint message configuration to autocomplete configuration&ndash;&gt;-->
+                    <!--<span ngt-hint-container [@fieldHintAnimation] class="error-message">-->
+                        <!--{{getTranslatedError(field, ngFormGroup.controls[field.name])}}</span>-->
+                <!--</ngt-autocomplete>-->
+            <!--</ng-template>-->
+
+            <ng-template [ngSwitchCase]="'selectWithSearch'">
+            </ng-template>
+
+            <!--<ng-template [ngSwitchCase]="'multiselect'">-->
+                <!--<div class="multiselect-container">-->
+                    <!--<md2-multiselect [items]="field.dataSource"-->
+                                     <!--[placeholder]="field.placeholder"-->
+                                     <!--[item-text]="field.visibleField"-->
+                                     <!--[item-value]="field.valueField"-->
+                                     <!--[formControlName]="field.name"-->
+                                     <!--(blur)="setInputAsTouched(field)"-->
+                                     <!--(change)="select(field, $event)">-->
+                    <!--</md2-multiselect>-->
+                    <!--<md-hint [@fieldHintAnimation] *ngIf="field.hint && !ngFormGroup?.controls[field.name]?.errors" [align]="field.hint.align || 'start'">-->
+                        <!--{{field.hint.value}}-->
+                    <!--</md-hint>-->
+                    <!--<md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">-->
+                        <!--{{getTranslatedError(field, ngFormGroup.controls[field.name])}}-->
+                    <!--</md-hint>-->
+                <!--</div>-->
+            <!--</ng-template>-->
+
+            <ng-template [ngSwitchCase]="'multiselectWithSearch'">
+            </ng-template>
+
+            <!--<ng-template [ngSwitchCase]="'datepicker'">-->
+                <!--<div class="datepicker-container">-->
+                    <!--<md2-datepicker-->
+                            <!--class="datepicker {{field.class || ''}}"-->
+                            <!--type="date"-->
+                            <!--[readonly]="field.readonly"-->
+                            <!--[min]="field.minDateValue"-->
+                            <!--[max]="field.maxDateValue"-->
+                            <!--[placeholder]="field.placeholder"-->
+                            <!--[format]="field.format"-->
+                            <!--[formControlName]="field.name">-->
+                    <!--</md2-datepicker>-->
+                    <!--<md-hint [@fieldHintAnimation] *ngIf="field.hint && !ngFormGroup?.controls[field.name]?.errors" [align]="field.hint.align || 'start'">-->
+                        <!--{{field.hint.value}}-->
+                    <!--</md-hint>-->
+                    <!--<md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">-->
+                        <!--{{getTranslatedError(field, ngFormGroup.controls[field.name])}}-->
+                    <!--</md-hint>-->
+                <!--</div>-->
+            <!--</ng-template>-->
+
+            <!--<ng-template [ngSwitchCase]="'timepicker'">-->
+                <!--<div class="datepicker-container">-->
+                    <!--<md2-datepicker-->
+                            <!--class="timepicker {{field.class || ''}}"-->
+                            <!--type="time"-->
+                            <!--[readonly]="field.readonly"-->
+                            <!--[min]="field.minDateValue"-->
+                            <!--[max]="field.maxDateValue"-->
+                            <!--[placeholder]="field.placeholder"-->
+                            <!--[format]="field.format"-->
+                            <!--[formControlName]="field.name">-->
+                    <!--</md2-datepicker>-->
+                    <!--<md-hint [@fieldHintAnimation] *ngIf="field.hint && !ngFormGroup?.controls[field.name]?.errors" [align]="field.hint.align || 'start'">-->
+                        <!--{{field.hint.value}}-->
+                    <!--</md-hint>-->
+                    <!--<md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">-->
+                        <!--{{getTranslatedError(field, ngFormGroup.controls[field.name])}}-->
+                    <!--</md-hint>-->
+                <!--</div>-->
+            <!--</ng-template>-->
+
+            <!--<ng-template [ngSwitchCase]="'datetimepicker'">-->
+                <!--<div class="datepicker-container">-->
+                    <!--<md2-datepicker-->
+                            <!--class="datetimepicker {{field.class || ''}}"-->
+                            <!--type="datetime"-->
+                            <!--[readonly]="field.readonly"-->
+                            <!--[min]="field.minDateValue"-->
+                            <!--[max]="field.maxDateValue"-->
+                            <!--[placeholder]="field.placeholder"-->
+                            <!--[format]="field.format"-->
+                            <!--[formControlName]="field.name">-->
+                    <!--</md2-datepicker>-->
+                    <!--<md-hint [@fieldHintAnimation] *ngIf="field.hint && !ngFormGroup?.controls[field.name]?.errors" [align]="field.hint.align || 'start'">-->
+                        <!--{{field.hint.value}}-->
+                    <!--</md-hint>-->
+                    <!--<md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">-->
+                        <!--{{getTranslatedError(field, ngFormGroup.controls[field.name])}}-->
+                    <!--</md-hint>-->
+                <!--</div>-->
+            <!--</ng-template>-->
+
+            <ng-template [ngSwitchCase]="'header'">
+                <md-input-container class="label {{field.class || 'default-header'}}">
+                    <input mdInput [type]="'text'" readonly [formControlName]="field.name"/>
+                </md-input-container>
+            </ng-template>
+
+            <!--<ng-template [ngSwitchCase]="'custom-component'">-->
+                <!--<custom-element-container-->
+                        <!--[customComponentRef]="customComponent"-->
+                        <!--[field]="field"-->
+                        <!--[formControlName]="field.name"-->
+                        <!--(onSelect)="select(field, $event)">-->
+                <!--</custom-element-container>-->
+            <!--</ng-template>-->
+
+            <ng-template [ngSwitchCase]="'submit'">
+                <ng-template [ngIf]="field.buttonType === 'md-icon-button'">
+                    <button md-icon-button [type]="field.type"
+                            class="{{color ? 'mat-' + color + ' ' : ''}}{{field.class || ''}}"
+                            [disabled]="formButtonDisabledState"
+                            [attr.color]="color">
+                        <md-icon>{{ field.icon }}</md-icon>
+                    </button>
+                </ng-template>
+                <ng-template [ngIf]="field.buttonType === 'md-raised-button'">
+                    <button md-raised-button [type]="field.type"
+                            class="{{color ? 'mat-' + color + ' ' : ''}}{{field.class || ''}}"
+                            [attr.color]="color"
+                            [disabled]="formButtonDisabledState">
+                        {{ field.value }}
+                    </button>
+                </ng-template>
+            </ng-template>
+
+            <ng-template [ngSwitchCase]="'reset'">
+                <ng-template [ngIf]="field.buttonType === 'md-icon-button'">
+                    <button md-icon-button
+                            class="{{color ? 'mat-' + color + ' ' : ''}}{{field.class || ''}}"
+                            [disabled]="formIsNotChanged"
+                            [attr.color]="color"
+                            (click)="resetForm(initialValue)">
+                        <md-icon>{{ field.icon }}</md-icon>
+                    </button>
+                </ng-template>
+                <ng-template [ngIf]="field.buttonType === 'md-raised-button'">
+                    <button md-raised-button
+                            class="{{color ? 'mat-' + color + ' ' : ''}}{{field.class || ''}}"
+                            [attr.color]="color"
+                            [disabled]="formIsNotChanged"
+                            (click)="resetForm(initialValue)">
+                        {{ field.value }}
+                    </button>
+                </ng-template>
+            </ng-template>
+        </div>
+    </div>
+
+    <div *ngIf="enableLogging">
+        Form value
+        <br>
+        {{ ngFormGroup.value | json }}
+        <br>
+        Initial value
+        <br>
+        {{ initialValue | json }}
+    </div>
+</form>

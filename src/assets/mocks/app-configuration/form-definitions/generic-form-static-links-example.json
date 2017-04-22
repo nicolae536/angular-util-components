@@ -1,0 +1,219 @@
+{
+    "name": "staticLinks",
+    "rows": [        
+        {
+            "elements": [
+                {
+                    "type": "reset",
+                    "buttonType": "md-icon-button",
+                    "icon": "close",
+                    "position": "right"
+                },
+                {
+                    "type": "submit",
+                    "buttonType": "md-icon-button",
+                    "icon": "check_circle",
+                    "position": "left"
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "header",
+                    "name": "HEADER",
+                    "value": "Static links exemple",
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "datepicker",
+                    "name": "MIN_DATE_PICKER",
+                    "placeholder": "Start date",
+                    "maxDateTime": "{ngControlValue=MAX_DATE_PICKER}",
+                    "format": "DD/MM/YYYY",
+                    "validation": [
+                        {
+                            "validator": "required",
+                            "errorMessage": "required",
+                            "errorToken": "requiredDateToken"
+                        }
+                    ],
+                    "width": 1
+                },
+                {
+                    "type": "datepicker",
+                    "name": "MAX_DATE_PICKER",
+                    "placeholder": "End date",
+                    "minDateTime": "{ngControlValue=MIN_DATE_PICKER}",
+                    "format": "DD/MM/YYYY",
+                    "validation": [
+                        {
+                            "validator": "required",
+                            "errorMessage": "required",
+                            "errorToken": "requiredDateToken"
+                        }
+                    ],
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "number",
+                    "name": "NUMBER_MIN",
+                    "placeholder": "Min value",
+                    "validation": [
+                        {
+                            "validator": "number",
+                            "errorMessage": "number",
+                            "errorToken": "numberToken"
+                        }
+                    ],
+                    "staticLinks": [
+                        {
+                            "control": "NUMBER_MAX",
+                            "validation": [
+                                {
+                                    "validator": "number",
+                                    "errorMessage": "number",
+                                    "errorToken": "numberToken"
+                                },
+                                {
+                                    "validator": "minValue",
+                                    "validatorValue": "{ngControlValue=NUMBER_MIN}",
+                                    "errorMessage": "minValue",
+                                    "errorToken": "minValueToken"
+                                }
+                            ]
+                        }
+                    ],
+                    "width": 1
+                },
+                {
+                    "type": "number",
+                    "name": "NUMBER_MAX",
+                    "placeholder": "Max value",
+                    "validation": [
+                        {
+                            "validator": "number",
+                            "errorMessage": "number",
+                            "errorToken": "numberToken"
+                        }
+                    ],
+                    "staticLinks": [
+                        {
+                            "control": "NUMBER_MIN",
+                            "validation": [
+                                {
+                                    "validator": "number",
+                                    "errorMessage": "number",
+                                    "errorToken": "numberToken"
+                                },
+                                {
+                                    "validator": "maxValue",
+                                    "validatorValue": "{ngControlValue=NUMBER_MAX}",
+                                    "errorMessage": "maxValue",
+                                    "errorToken": "maxValueToken"
+                                }
+                            ]
+                        }
+                    ],
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "number",
+                    "name": "CODE_ELEMENT",
+                    "placeholder": "Code",
+                    "hint": {
+                        "align": "start",
+                        "value": "This will reset the code description and it will set the value of code data"
+                    },
+                    "validation": [
+                        {
+                            "validator": "maxLength",
+                            "validatorValue": 10,
+                            "errorMessage": "maxLengthToken",
+                            "errorToken": "maxLengthToken"
+                        }
+                    ],
+                    "staticLinks": [
+                        {
+                            "control": "CODE_DESCRIPTION",
+                            "type": "RESET"
+                        },
+                        {
+                            "control": "CODE_DATA",
+                            "type": "COPY_VALUE"
+                        }
+                    ],
+                    "width": 1
+                },
+                {
+                    "type": "text",
+                    "name": "CODE_DESCRIPTION",
+                    "placeholder": "Code description",
+                    "validation": [
+                        {
+                            "validator": "text",
+                            "validatorValue": 10,
+                            "errorMessage": "textToken",
+                            "errorToken": "textToken"
+                        }
+                    ],
+                    "value": "Secret code",
+                    "width": 1
+                },
+                {
+                    "type": "number",
+                    "name": "CODE_DATA",
+                    "placeholder": "Code data",
+                    "validation": [
+                        {
+                            "validator": "maxLength",
+                            "validatorValue": 10,
+                            "errorMessage": "maxLengthToken",
+                            "errorToken": "maxLengthToken"
+                        }
+                    ],
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "text",
+                    "name": "TEANSLATOR",
+                    "placeholder": "Translate to romanian",
+                    "staticLinks": [
+                        {
+                            "control": "TEANSLATOR_VALUE",
+                            "type": "DATA_INHERITANCE",
+                            "inheritanceObject": {
+                                "coup": "cana",
+                                "computer": "calculator",
+                                "random": "la intamplare"
+                            }
+                        }
+                    ],
+                    "width": 1
+                },
+                {
+                    "type": "label",
+                    "name": "TEANSLATOR_VALUE",
+                    "placeholder": "Translated value",
+                    "width": 1
+                }
+            ]
+        }
+    ]
+}

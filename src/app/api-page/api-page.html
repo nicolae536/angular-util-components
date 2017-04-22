@@ -1,0 +1,11 @@
+<md-sidenav-container>
+    <md-sidenav #sidenav [opened]="sideNavOptions.opened" [mode]="sideNavOptions.mode" class="app-sidenav">
+        <components-menu
+            [menuItems]="menuConfiguration"
+            (onItemClicked)="onItemClicked($event)">
+        </components-menu>
+    </md-sidenav>
+    <div class="app-sidenav-content">
+        <router-outlet></router-outlet>         
+    </div>
+</md-sidenav-container>

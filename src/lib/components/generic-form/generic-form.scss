@@ -1,0 +1,302 @@
+@import './generic-form-theme';
+@import '../../../../node_modules/@angular/material/theming';
+
+.default-theme {
+    @include mat-core();
+    $candy-app-primary: mat-palette($mat-indigo);
+    $candy-app-accent: mat-palette($mat-pink, A200, A100, A400);
+    $candy-app-warn: mat-palette($mat-red);
+    $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+    @include angular-material-theme($candy-app-theme);
+
+    @include form-definition($candy-app-theme);
+}
+
+$form-layout-map: (
+    formTopPadding: 21px,
+    formRightPadding: 15px,
+    formRowMarginBottom: 15px,
+    formElementEmptySpace: 12px,
+    formElementMarginLeft: 6px,
+    formElementMarginRight: 6px,
+    formSelectElementPaddingTop: 9px,
+    headerColor: #757575,
+    headerTextColor: #FAFAFA,
+    errorMessageFontSize: 12px
+);
+
+$md-select-layout-map: (
+    selectContainerWith: 100%,
+    selectContainerBottom: -30px,
+    selectTriggerMinWidth: 84px,
+    selectValueMaxWidth: 75%,
+    selecthintTopPosition: 43px
+);
+
+.ngt-generic-form-layout {
+    .form-row {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        margin-bottom: map-get($form-layout-map, formRowMarginBottom);
+
+        .form-element {
+            > *:not(button) {
+                box-sizing: border-box;
+                width: calc(100% - #{map-get($form-layout-map, formElementEmptySpace)});
+                margin-left: map-get($form-layout-map, formElementMarginLeft);
+                margin-right: map-get($form-layout-map, formElementMarginRight);
+            }
+
+            @for $i from 1 through 12 {
+                &.size#{$i} {
+                    flex: $i;
+                }
+            }
+
+            &.size-1 {
+                display: none;
+                pointer-events: none;
+            }
+            &.center {
+                display: flex;
+                justify-content: center;
+            }
+            &.left {
+                display: flex;
+                justify-content: flex-start;
+                margin-left: map-get($form-layout-map, formElementMarginLeft);
+            }
+            &.right {
+                display: flex;
+                justify-content: flex-end;
+                margin-right: map-get($form-layout-map, formElementMarginRight);
+            }
+
+            .default-header {
+                padding: map-get($form-layout-map, formElementMarginLeft);
+                color: map-get($form-layout-map, headerTextColor);
+
+                .mat-input-wrapper {
+                    .mat-input-underline {
+                        display: none;
+                    }
+                }
+            }
+
+            md-hint,
+            .error-message {
+                width: 100%;
+                font-size: map-get($form-layout-map, errorMessageFontSize);
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            .combobox-container {
+                // hack to fix combobox
+                padding-top: map-get($form-layout-map, formSelectElementPaddingTop);
+                position: relative;
+                min-height: 50.4px; //input height
+
+                md-select {
+                    position: absolute;
+                    width: map-get($md-select-layout-map, selectContainerWith);
+
+                    .mat-select-trigger {
+                        min-width: map-get($md-select-layout-map, selectTriggerMinWidth);
+                        margin-right: 5px;
+
+                        .mat-select-placeholder,
+                        .mat-select-value {
+                            max-width: map-get($md-select-layout-map, selectValueMaxWidth);
+                        }
+
+                        .mat-select-arrow {
+                            margin-left: auto;
+                        }
+                    }
+                }
+
+                md-hint {
+                    top: map-get($md-select-layout-map, selecthintTopPosition);
+                }
+            }
+
+            .datepicker-container {
+                position: relative;
+
+                md2-datepicker {
+                    top: -10px;
+                    width: 100%;
+                    max-width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    font-family: Roboto, "Helvetica Neue", sans-serif;
+                    line-height: normal;
+                    text-align: left;
+
+                    .md2-datepicker-panel {
+                        .md2-datepicker-content {
+                            .md2-datepicker-actions {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+
+                md-hint {
+                    top: 43px;
+                }
+            }
+
+            .multiselect-container {
+                position: relative;
+
+                md2-multiselect {
+                    position: relative;
+                    top: -3px;
+                    font-family: Roboto, "Helvetica Neue", sans-serif;
+                    line-height: normal;
+                    text-align: left;
+                    width: 100%;
+                    margin: 0;
+                    padding-bottom: 9px;
+
+                    .md2-multiselect-container {
+                        svg {
+                            background: none;
+                        }
+                    }
+                }
+            }
+
+            .label {
+                pointer-events: none;
+            }
+
+            ngt-autocomplete {
+                display: inherit;
+            }
+        }
+
+        md-checkbox {
+            margin-top: map-get($form-layout-map, mdCheckboxMarginTop);
+            display: block;
+        }
+
+        md-slide-toggle {
+            &.mat-disabled {
+                pointer-events: none;
+            }
+        }
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 767px) {
+        .form-row {
+            flex-flow: column;
+            margin-bottom: 0px;
+
+            .form-element {
+                margin-bottom: 15px;
+
+                .combobox-container {
+                    // hack to fix combobox
+                    padding-top: 20px;
+                    position: relative;
+                    padding-bottom: 20px;
+
+                    md-select {
+                        position: relative;
+                        width: 100%;
+                        bottom: 0px;
+                    }
+
+                    md-hint {
+                        top: auto;
+                        bottom: 0px;
+                    }
+                }
+
+                md2-datepicker {
+                    &.timepicker,
+                    &.datepicker,
+                    &.datetimepicker {
+                        .md2-datepicker-panel {
+                            width: 100%;
+                            max-width: 300px;
+
+                            .md2-datepicker-header {
+                                .md2-datepicker-header-date-time {
+                                    font-size: 1.8em;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+        .form-row {
+            .form-element {
+
+                md2-datepicker {
+                    &.timepicker,
+                    &.datepicker,
+                    &.datetimepicker {
+
+                        .md2-datepicker-panel {
+                            max-width: 300px;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            display: inline-block;
+
+                            .md2-datepicker-header {
+                                padding: 1em;
+                                color: #fff;
+                                font-weight: 500;
+                                width: 100%;
+                                white-space: nowrap;
+                                box-sizing: border-box;
+                            }
+
+                            .md2-calendar-dates {
+                                margin: 0 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+        .form-row {
+            .form-element {
+                &:nth-child(n + 3) {
+                    &:last-child {
+                        .datepicker-container {
+                            md2-datepicker {
+                                &.timepicker,
+                                &.datepicker,
+                                &.datetimepicker {
+                                    .md2-datepicker-panel {
+                                        left: -55px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.mat-select-content {
+    background: white;
+}

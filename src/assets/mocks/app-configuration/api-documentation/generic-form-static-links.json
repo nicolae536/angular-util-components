@@ -1,0 +1,62 @@
+{
+    "apiComponentPresentation": {
+        "componentType": "genericForm",
+        "componentConfiguration": {
+            "serverMap": "staticLinksExample"
+        },
+        "shortDescription": "Generic form can be used to render forms from a json configuration"
+    },
+    "apiReference": {
+        "title": "Generic form static links",
+        "apiDetails": [  
+            {
+                "title": "Static links represent a binding evaluated on the element valueChanges",
+                "type": "description",
+                "bodyText": [
+                    "   The static links are created after the form service evalueates all form controls.",
+                    " All static links are interpreted on each value change. The form reset will reset all linked data,",
+                    " and will set the initial values passed along with the definition or passed as input. A link can change an input validation / value / rest state /",
+                    " set a value from a config object using the current value of the control the links are creates so we can link fields together"
+                ]
+            },          
+            {
+                "title": "BaseLinkRealation this represents the selection of an option or from autocomplete",
+                "type": "interface",
+                "classDefinition": {
+                    "className": "BaseLinkRealation",
+                    "classProps": [
+                        "control: string; // affected control",
+                        "executeInSafeContext: boolean; // deactivetes the links between elements before resolving the relation",
+                        "validation?: IValidator[]; // if the relation will change the validation for the element",
+                        "fieldName?: string; // the field from the Object value which should be set as value in the linked field",
+                        "disabled?: boolean; // an array with the specific option values which should disabled this field"
+                    ]
+                }
+            },
+            {
+                "title": "StaticLinkRelation executed on valueChange event",
+                "type": "interface",
+                "classDefinition": {
+                    "className": "StaticLinkRelation extends BaseLinkRealation",
+                    "classProps": [
+                        "type: string; // this should be a {LinkType} this is used only for subscription links",
+                        "inheritanceObject: Object;"
+                    ]
+                }
+            },
+            {
+                "title": "LinkType possible types for StaticLinkRelation",
+                "type": "interface",
+                "classDefinition": {
+                    "className": "LinkType",
+                    "classProps": [
+                        "static RESET:string = 'RESET';",
+                        "static COPY_VALUE:string = 'COPY_VALUE';",
+                        "static DATA_INHERITANCE:string = 'DATA_INHERITANCE';"
+                    ]
+                }
+            }
+        ]
+    },
+    "other": {}
+}

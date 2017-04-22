@@ -1,0 +1,426 @@
+{
+    "name": "paytypesmaintenance",
+    "rows": [
+        {
+            "elements": [
+                {
+                    "type": "reset",
+                    "buttonType": "md-icon-button",
+                    "icon": "close",
+                    "position": "right"
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "header",
+                    "name": "HEADER",
+                    "value": "Hello Form",
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "text",
+                    "name": "DESCRIPTION",
+                    "placeholder": "Description",
+                    "hint": {
+                        "align": "start",
+                        "value": "Description for pay type"
+                    },
+                    "validation": [
+                        {
+                            "validator": "maxLength",
+                            "validatorValue": 40,
+                            "errorMessage": "maxLength=40",
+                            "errorToken": "TestToken"
+                        }
+                    ],
+                    "value": "Test",
+                    "width": 2
+                },
+                {
+                    "type": "combobox",
+                    "name": "TEST_COMBO_BOX",
+                    "placeholder": "Pizza",
+                    "valueField": "value",
+                    "validation": [
+                        {
+                            "validator": "required",
+                            "errorMessage": "required",
+                            "errorToken": "requiredToken"
+                        }
+                    ],
+                    "displayFields": [
+                        "text"
+                    ],
+                    "dataSource": [
+                        {
+                            "text": "Quatro stagioni",
+                            "value": "Rand1",
+                            "sort": 1
+                        },
+                        {
+                            "text": "Quatro formagi",
+                            "value": "Rand2",
+                            "sort": 12
+                        },
+                        {
+                            "text": "Prosciuto e funghi",
+                            "value": "Rand3",
+                            "sort": 3
+                        }
+                    ],
+                    "runtimelinks": [
+                        {
+                            "control": "EARNING_SORT_CODE",
+                            "validation": [
+                                {
+                                    "validator": "maxLength",
+                                    "validatorValue": 10,
+                                    "errorMessage": "maxLength=10",
+                                    "errorToken": "SpecialToken"
+                                }
+                            ],
+                            "fieldName": "sort"
+                        }
+                    ],
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "text",
+                    "name": "EARNING_SORT_CODE",
+                    "placeholder": "Sort order",
+                    "validation": [
+                        {
+                            "validator": "maxLength",
+                            "validatorValue": 3,
+                            "errorMessage": "maxLength=3",
+                            "errorToken": "maxLengthToken"
+                        }
+                    ],
+                    "hint": {
+                        "value": "This represents the sort order"
+                    },
+                    "value": "1353",
+                    "width": 1
+                },
+                {
+                    "type": "text",
+                    "name": "PA_EARNING_CODE",
+                    "placeholder": "Payroll Earn Cd",
+                    "validation": [
+                        {
+                            "validator": "maxLength",
+                            "validatorValue": 3,
+                            "errorMessage": "maxLength=3",
+                            "errorToken": "maxLengthToken1"
+                        }
+                    ],
+                    "value": "1353",
+                    "width": 1
+                },
+                {
+                    "type": "autocomplete",
+                    "name": "TEST_AUTOCOMPLETE",
+                    "placeholder": "Country",
+                    "validation": [
+                        {
+                            "validator": "maxLength",
+                            "validatorValue": 10,
+                            "errorMessage": "maxLength=10",
+                            "errorToken": "maxLengthToken1"
+                        },
+                        {
+                            "validator": "minLength",
+                            "validatorValue": 3,
+                            "errorMessage": "minLength=3",
+                            "errorToken": "minLengthToken3"
+                        }
+                    ],
+                    "config": {
+                        "searchConfig": {
+                            "throttleTimer": 300,
+                            "minSearchQueryLength": 3
+                        },
+                        "activateOnFocus": true,
+                        "statesMessages": {
+                            "initialMessage": "This is an autocomplete field",
+                            "typingMessage": "Typing...",
+                            "searchingMessage": "Loading data...",
+                            "invalidSearchLengthMessage": "Min 3 chanracters",
+                            "noResultsFoundMessage": "No suggestions"
+                        },
+                        "listMapping": {
+                            "valueField": "value",
+                            "visibleField": "text"
+                        }
+                    },
+                    "value": "Rand",
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "text",
+                    "name": "COLUMN_SEQ",
+                    "placeholder": "Crew Card Column",
+                    "validation": [
+                        {
+                            "validator": "maxLength",
+                            "validatorValue": 3,
+                            "errorMessage": "maxLength=3",
+                            "errorToken": "maxLengthToken2"
+                        }
+                    ],
+                    "value": "1353",
+                    "width": 1
+                },
+                {
+                    "type": "text",
+                    "name": "MAX_PERIOD_HOURS",
+                    "placeholder": "Max Period Hrs",
+                    "validation": [
+                        {
+                            "validator": "number",
+                            "errorMessage": "errorMessage",
+                            "errorToken": "maxLengthToken4"
+                        },
+                        {
+                            "validator": "minValue",
+                            "validatorValue": 0,
+                            "errorMessage": "minValue=0",
+                            "errorToken": "maxLengthToke6"
+                        },
+                        {
+                            "validator": "maxLength=13",
+                            "validatorValue": 13,
+                            "errorMessage": "maxLength=13",
+                            "errorToken": "maxLengthToken11"
+                        },
+                        {
+                            "validator": "maxDecimalLength",
+                            "validatorValue": 2,
+                            "errorMessage": "maxDecimalLength=2",
+                            "errorToken": "maxLengthToken13"
+                        }
+                    ],
+                    "value": "1353",
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "number",
+                    "name": "NUMBER_MIN",
+                    "placeholder": "Min value",
+                    "validation": [
+                        {
+                            "validator": "number",
+                            "validatorValue": 10,
+                            "errorMessage": "number",
+                            "errorToken": "numberToken"
+                        }
+                    ],
+                    "staticLinks": [
+                        {
+                            "control": "NUMBER_MAX",
+                            "validation": [
+                                {
+                                    "validator": "number",
+                                    "errorMessage": "number",
+                                    "errorToken": "numberToken"
+                                },
+                                {
+                                    "validator": "minValue",
+                                    "validatorValue": "{ngControlValue=NUMBER_MIN}",
+                                    "errorMessage": "minValue",
+                                    "errorToken": "minValueToken"
+                                }
+                            ]
+                        }
+                    ],
+                    "width": 1
+                },
+                {
+                    "type": "number",
+                    "name": "NUMBER_MAX",
+                    "placeholder": "Max value",
+                    "validation": [
+                        {
+                            "validator": "number",
+                            "errorMessage": "number",
+                            "errorToken": "numberToken"
+                        }
+                    ],
+                    "staticLinks": [
+                        {
+                            "control": "NUMBER_MIN",
+                            "validation": [
+                                {
+                                    "validator": "number",
+                                    "errorMessage": "number",
+                                    "errorToken": "numberToken"
+                                },
+                                {
+                                    "validator": "maxValue",
+                                    "validatorValue": "{ngControlValue=NUMBER_MAX}",
+                                    "errorMessage": "maxValue",
+                                    "errorToken": "maxValueToken"
+                                }
+                            ]
+                        }
+                    ],
+                    "width": 1
+                },
+                {
+                    "type": "datepicker",
+                    "name": "TEST_DATEPICKER",
+                    "placeholder": "Multi pizza",
+                    "format": "DD/MM/YYYY",
+                    "validation": [
+                        {
+                            "validator": "required",
+                            "errorMessage": "required",
+                            "errorToken": "requiredDateToken"
+                        }
+                    ],
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "multiselect",
+                    "name": "TEST_MULTISELECT",
+                    "placeholder": "Multi pizza",
+                    "valueField": "value",
+                    "validation": [
+                        {
+                            "validator": "required",
+                            "errorMessage": "required",
+                            "errorToken": "requiredToken"
+                        }
+                    ],
+                    "visibleField": "text",
+                    "dataSource": [
+                        {
+                            "text": "Quatro stagioni",
+                            "value": "Rand1",
+                            "sort": 1
+                        },
+                        {
+                            "text": "Quatro formagi",
+                            "value": "Rand2",
+                            "sort": 12
+                        },
+                        {
+                            "text": "Prosciuto e funghi",
+                            "value": "Rand3",
+                            "sort": 3
+                        },
+                        {
+                            "text": "Quatro stagioni1",
+                            "value": "Rand11",
+                            "sort": 1
+                        },
+                        {
+                            "text": "Quatro formagi2",
+                            "value": "Rand22",
+                            "sort": 12
+                        },
+                        {
+                            "text": "Prosciuto e funghi3",
+                            "value": "Rand33",
+                            "sort": 3
+                        }
+                    ],
+                    "runtimelinks": [
+                        {
+                            "control": "NUMBER_MIN",
+                            "fieldName": "sort"
+                        }
+                    ],
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "timepicker",
+                    "name": "TEST_TIMEPICKER",
+                    "placeholder": "Start time",
+                    "format": "HH:MM",
+                    "validation": [
+                        {
+                            "validator": "required",
+                            "errorMessage": "required",
+                            "errorToken": "requiredDateToken"
+                        }
+                    ],
+                    "width": 1
+                },
+                {
+                    "type": "datetimepicker",
+                    "name": "TEST_DATE_TIMEPICKER",
+                    "placeholder": "Start time",
+                    "format": "DD/MM/YYYY HH:mm",
+                    "validation": [
+                        {
+                            "validator": "required",
+                            "errorMessage": "required",
+                            "errorToken": "requiredDateToken"
+                        }
+                    ],
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "datepicker",
+                    "name": "TEST_DATEPICKER_1",
+                    "placeholder": "Min date setter",
+                    "format": "DD/MM/YYYY",
+                    "validation": [
+                        {
+                            "validator": "required",
+                            "errorMessage": "required",
+                            "errorToken": "requiredDateToken"
+                        }
+                    ],
+                    "width": 1
+                },
+                {
+                    "type": "datepicker",
+                    "name": "TEST_DATEPICKER_2",
+                    "placeholder": "Min date test",
+                    "minDateTime": "{ngControlValue=TEST_DATEPICKER_1}",
+                    "format": "DD/MM/YYYY",
+                    "validation": [
+                        {
+                            "validator": "required",
+                            "errorMessage": "required",
+                            "errorToken": "requiredDateToken"
+                        }
+                    ],
+                    "width": 1
+                }
+            ]
+        }
+    ]
+}

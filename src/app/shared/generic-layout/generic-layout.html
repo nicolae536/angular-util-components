@@ -1,0 +1,19 @@
+<div class="layout-header">
+    <button class="menu-button" md-icon-button *ngIf="currentView === 'mobile' || currentView === 'tablet'" (click)="openSideMenu()">
+        <md-icon>menu</md-icon>
+    </button>
+    <span class="header-text">{{headerGroup}}{{headerGroup ? ' - ' : ''}}{{headerOption}}</span>
+</div>
+<div class="layout-presentation">
+    <md-tab-group>
+        <md-tab label="Example">
+            <api-component-presentation [componentPresentationData]="pageData?.apiComponentPresentation"></api-component-presentation>
+        </md-tab>
+        <md-tab label="Api reference">
+            <api-reference-reader [data]="pageData?.apiReference"></api-reference-reader>
+        </md-tab>
+        <md-tab label="Other exemples">
+             <div class="other-text">Some more tab content...</div>
+        </md-tab>
+    </md-tab-group>
+</div>

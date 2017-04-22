@@ -1,0 +1,93 @@
+@import "../styles/app-theme";
+
+.home-page {
+    height: calc(100vh - 64px);
+
+    .presentation-image {
+        height: 60%;
+        max-height: 60%;
+        background-color: $primary;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-around;
+
+        &.mobile {
+            padding: 0.8em;
+        }
+
+        .svg-container {
+            height: 240px;
+            width: 500px;
+            position: relative;
+
+            &.mobile {
+                width: 100%;
+            }
+
+            .field-style {
+                fill:$primary;
+                stroke-width:3;
+                stroke:rgb(255,255,255)
+            }
+
+            .field-text-style {
+                fill:rgb(255,255,255);
+                font-size: 2em;
+            }
+
+            .field-icon-position {
+                position: absolute;
+                top:0;
+                right: 0;
+            }
+        }
+
+        .primary-text {
+            font-size: 2em;
+            color: white;
+        }
+
+        .left-text {
+            margin-left: -200px;
+            //50px 0 50px
+            //&.tablet {
+            //    margin: 5px 0 5px -200px;
+            //}
+        }
+
+        .right-text {
+            //margin-top: 50px;
+            margin-right: -400px;
+
+            &.tablet {
+                margin-right: -250px;
+            }
+        }
+    }
+
+    .get-started {
+        height: 40%;
+        max-height: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        > div {
+            padding-bottom: 10px;
+        }
+
+        button {
+            height: 50px;
+        }
+    }
+}
+
+/* Portrait and Landscape */
+@media (max-device-width: 1280px) {
+    .home-page {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}

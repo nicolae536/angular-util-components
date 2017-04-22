@@ -1,0 +1,67 @@
+.api-reference-reader {
+    min-width: 400px;
+
+    .header {
+        padding: 1em;
+        font-size: 2em;
+    }
+
+    .table-container {
+        width: 100%;
+        padding-top: 1em;
+    }
+
+    .api-details-container {
+        width: 100%;
+        padding: 1.5em 0;
+    }
+}
+
+ng-table {
+
+    table {
+        margin: 0 auto;
+        clear: both;
+        border-collapse: separate;
+        border-spacing: 0;
+        border: 1px solid #eceeef;
+    }
+    
+    thead {
+        display: table-header-group;
+        vertical-align: middle;
+        border-color: inherit;
+        tr {
+            display: table-row;
+            vertical-align: inherit;
+            border-color: inherit;
+        }
+
+        th, 
+        td {
+            padding: 10px 18px;
+            border-bottom: 1px solid #111;
+            font-weight: bold;
+        }
+    }
+
+    tbody {
+        
+        tr {
+            display: table-row;
+            vertical-align: inherit;
+            border-color: inherit;
+            background-color: #ffffff;
+
+            &:nth-of-type(odd) {
+                background-color: #f9f9f9;
+            }
+        }
+    }
+
+    td,
+    th {
+        border: 1px solid #eceeef;
+        font-size: 1em;
+    }
+}

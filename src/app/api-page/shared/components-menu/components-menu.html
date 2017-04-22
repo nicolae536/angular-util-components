@@ -1,0 +1,10 @@
+<md-nav-list *ngFor="let menuGroup of viewMenuItems">
+    <span class="menu-subheader">{{menuGroup.group}}</span>
+    <md-divider></md-divider>
+    <div *ngFor="let item of menuGroup.optionsList">
+        <a md-list-item [routerLink]="item.url" [class.selected]="item.selected">
+            <md-icon>{{item.icon}}</md-icon> {{item.description}}
+        </a>
+        <md-divider></md-divider>
+    </div>
+</md-nav-list>

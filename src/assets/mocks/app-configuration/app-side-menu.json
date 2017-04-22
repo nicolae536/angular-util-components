@@ -1,0 +1,60 @@
+[
+    {
+        "group": "Components",
+        "groupId": "components",
+        "optionsList": [
+            {
+                "url": "components/autocomplete",
+                "description": "Autocomplete",
+                "icon": ""
+            },
+            {
+                "url": "components/form",
+                "description": "Generic form",
+                "icon": ""
+            }
+        ]
+    },
+    {
+        "group": "Form exemples",
+        "groupId": "form",
+        "optionsList": [
+            {
+                "url": "form/definition",
+                "description": "Form definition",
+                "icon": ""
+            },
+            {
+                "url": "form/validation",
+                "description": "Form validations",
+                "icon": ""
+            },
+            {
+                "url": "form/static-links",
+                "description": "Form static links",
+                "icon": ""
+            },
+            {
+                "url": "form/runtime-links",
+                "description": "Form runtime links",
+                "icon": ""
+            }
+        ]
+    },
+    {
+        "group": "Services",
+        "groupId": "services",
+        "optionsList": [
+            {
+                "url": "services/page-streams",
+                "description": "Page streams service",
+                "icon": ""
+            },
+            {
+                "url": "services/searching",
+                "description": "Searching service",
+                "icon": ""
+            }
+        ]
+    }
+]

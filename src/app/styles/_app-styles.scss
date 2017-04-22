@@ -1,0 +1,9 @@
+@import './app-theme';
+
+md-nav-list {
+    .mat-list-item {
+        &:hover {
+            color: $primary;
+        }
+    }
+}

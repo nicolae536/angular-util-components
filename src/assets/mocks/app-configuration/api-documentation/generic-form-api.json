@@ -1,0 +1,246 @@
+{
+    "apiComponentPresentation": {
+        "componentType": "genericForm",
+        "componentConfiguration": {
+            "serverMap": "simpleExample"
+        },
+        "shortDescription": "Generic form can be used to render forms from a json configuration"
+    },
+    "apiReference": {
+        "title": "Generic form component",
+        "apiPresentation": {
+            "headerDefinition": [
+                {
+                    "name": "field",
+                    "title": "Field"
+                },
+                {
+                    "name": "type",
+                    "title": "Type"
+                },
+                {
+                    "name": "description",
+                    "title": "Description"
+                }
+            ],
+            "tableDefinition": [
+                {
+                    "field": "color",
+                    "type": "@Input",
+                    "description": "Material design color property primary | accent | warn..."
+                },                
+                {
+                    "field": "initialValue",
+                    "type": "@Input",
+                    "description": "if the initial value is not passed the form will use it's own generated initial value from the fields"
+                },
+                {
+                    "field": "resetFormOnValueChange",
+                    "type": "@Input",
+                    "description": "if you want to set a new value from the upper component and to reset for errors along with it this should be true"
+                },
+                {
+                    "field": "formValue",
+                    "type": "@Input",
+                    "description": "The form value"
+                },
+                {
+                    "field": "formDefinition",
+                    "type": "@Input",
+                    "description": "The form definition which is described below"
+                },
+                {
+                    "field": "dataServices",
+                    "type": "@Input",
+                    "description": "Used to provide backend classDefinition for different components, right now only autocomplete component uses it"
+                },
+                {
+                    "field": "useDefaultTheme",
+                    "type": "@Input",
+                    "description": "If you want to use my default theme, right now I use it for testing"
+                },
+                {
+                    "field": "enableLogging",
+                    "type": "@Input",
+                    "description": "If you want to see the value of the form in html"
+                },
+                {
+                    "field": "onFormReady",
+                    "type": "@Output",
+                    "description": "After the form was rendered we emit a ready event"
+                },
+                {
+                    "field": "onValueChange",
+                    "type": "@Output",
+                    "description": "Each time a user changes a value this event will emit"
+                },
+                {
+                    "field": "onFormSubmit",
+                    "type": "@Output",
+                    "description": "If you have a submit button inside your form"
+                }
+            ]
+        },
+        "apiDetails": [
+            {
+                "title": "For the begining the top level object is FormDefinition.",
+                "type": "interface",
+                "classDefinition": {
+                    "className": "FormDefinition",
+                    "classProps": [
+                        "name: string; // the name of the form which is mandatory",
+                        "theme: string; // not mandatory",
+                        "rows: Array<FormRow>; // mandatory all the elements of the form will be stored here on rows"
+                    ]
+                }
+            },
+            {
+                "title": "Row of the form which is an Array of form elements. FormRow definition",
+                "type": "interface",
+                "classDefinition": {
+                    "className": "FormRow",
+                    "classProps": [
+                        "elements: Array<FormElement>; // all the elements inside one line",
+                        "class?: string; // if you want to add a specific class to the form element"
+                    ]
+                }
+            },
+            {
+                "title": "FormElement the actul definition of an element",
+                "type": "interface",
+                "classDefinition": {
+                    "className": "FormElement extends DateTime",
+                    "classProps": [
+                        "type: string;",
+                        "name: string;",
+                        "placeholder: string;",
+                        "class: string;",
+                        "icon?: string;",
+                        "value?: string;",
+                        "hint: IHint;",
+                        "disabled?: boolean;",
+                        "width: number;",
+                        "validation?: IValidator[]; // a set of validators are bulilt",
+                        "radioButtons?: IRadioButton[]; // radio buttons have a special classDefinitions",
+                        "buttonType?: string; // only for submit/reset types it can have two values md-icon-button or md-raised-button",
+                        "position?: string; // when only one element is on the row we can position it on center/left/right",
+                        "runtimelinks?: RuntimeLinkRelation[];",
+                        " //for select/autocomplete when a selection is made the form will evaluate the link with other field",
+                        "staticLinks: StaticLinkRelation[];",
+                        "// same principle as for runtime links but this are triggered when the FormControl valueChanges is triggered",
+                        "config?: any; custom config for components like autocomplete",
+                        "valueField?: string; // which field from the options should represent the value, for select",
+                        "dataSource?: Array<any>; // the options for md-select",
+                        "displayFields: Array<string>; // which propertyes from the select options should be displayed"
+                    ]
+                }
+            },
+            {
+                "title": "IValidator the validator configuration",
+                "type": "interface",
+                "classDefinition": {
+                    "className": "IValidator",
+                    "classProps": [
+                        "validator: string; // if is a validator that we already have",
+                        "validatorValue: string; // for min and max values",
+                        "errorToken?: string; // used for extracting a translation",
+                        "errorMessage: string; // TODO check if this is needed"
+                    ]
+                }
+            },
+            {
+                "title": "This is the list possible values for validator property",
+                "type": "list",
+                "list": [
+                    "required",
+                    "minLength",
+                    "maxLength",
+                    "pattern //if you want to pass your own regex",
+                    "email",
+                    "text",
+                    "number",
+                    "password",
+                    "minValue",
+                    "manValue",
+                    "integer",
+                    "maxDecimalLength"
+                ]
+            },
+            {
+                "title": "DateTime only for date/time elements",
+                "type": "interface",
+                "classDefinition": {
+                    "className": "DateTime",
+                    "classProps": [
+                        "minDateValue?: any;",
+                        "maxDateValue?: any;",
+                        "minDateTime?: any;",
+                        "maxDateTime?: any;",
+                        "format?: string;"
+                    ]
+                }
+            },
+            {
+                "title": "IHint",
+                "type": "interface",
+                "classDefinition": {
+                    "className": "IHint",
+                    "classProps": [
+                        "align: string; // start, end",
+                        "value: string;"
+                    ]
+                }
+            },
+            {
+                "title": "IRadioButton",
+                "type": "interface",
+                "classDefinition": {
+                    "className": "IHint",
+                    "classProps": [
+                        "checked: boolean;",
+                        "placeholder: string;",
+                        "class: string;"
+                    ]
+                }
+            },
+            {
+                "title": "BaseLinkRealation this represents the selection of an option or from autocomplete",
+                "type": "interface",
+                "classDefinition": {
+                    "className": "BaseLinkRealation",
+                    "classProps": [
+                        "control: string; // affected control",
+                        "executeInSafeContext: boolean; // deactivetes the links between elements before resolving the relation",
+                        "validation?: IValidator[]; // if the relation will change the validation for the element",
+                        "fieldName?: string; // the field from the Object value which should be set as value in the linked field",
+                        "disabled?: boolean; // an array with the specific option values which should disabled this field"
+                    ]
+                }
+            },
+            {
+                "title": "StaticLinkRelation executed on valueChange event",
+                "type": "interface",
+                "classDefinition": {
+                    "className": "StaticLinkRelation extends BaseLinkRealation",
+                    "classProps": [
+                        "type: string; // this should be a {LinkType} this is used only for subscription links",
+                        "inheritanceObject: Object;"
+                    ]
+                }
+            },
+            {
+                "title": "LinkType possible types for StaticLinkRelation",
+                "type": "interface",
+                "classDefinition": {
+                    "className": "LinkType",
+                    "classProps": [
+                        "static RESET:string = 'RESET';",
+                        "static COPY_VALUE:string = 'COPY_VALUE';",
+                        "static DATA_INHERITANCE:string = 'DATA_INHERITANCE';"
+                    ]
+                }
+            }
+        ]
+    },
+    "other": {}
+}

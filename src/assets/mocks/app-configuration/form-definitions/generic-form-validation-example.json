@@ -1,0 +1,261 @@
+{
+    "name": "validation",
+    "rows": [
+        {
+            "elements": [
+                {
+                    "type": "reset",
+                    "buttonType": "md-icon-button",
+                    "icon": "close",
+                    "position": "right"
+                },
+                {
+                    "type": "submit",
+                    "buttonType": "md-icon-button",
+                    "icon": "check_circle",
+                    "position": "left"
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "header",
+                    "name": "HEADER",
+                    "value": "Validation exemple Form",
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "text",
+                    "name": "REQUIRED",
+                    "placeholder": "Required element",
+                    "hint": {
+                        "align": "start",
+                        "value": "This element is required"
+                    },
+                    "validation": [
+                        {
+                            "validator": "required",
+                            "errorMessage": "requiredMessage",
+                            "errorToken": "requiredToken"
+                        }
+                    ],
+                    "width": 2
+                },
+                {
+                    "type": "text",
+                    "name": "Description",
+                    "placeholder": "Description",
+                    "hint": {
+                        "align": "start",
+                        "value": "Min 10 characters"
+                    },
+                    "valueField": "value",
+                    "validation": [
+                        {
+                            "validator": "minLength",
+                            "validatorValue": 10,
+                            "errorMessage": "minLengthMessage",
+                            "errorToken": "minLengthToken"
+                        }
+                    ],
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "text",
+                    "name": "COMMENT",
+                    "placeholder": "Comments",
+                    "validation": [
+                        {
+                            "validator": "maxLength",
+                            "validatorValue": 50,
+                            "errorMessage": "maxLengthMessage",
+                            "errorToken": "maxLengthToken"
+                        }
+                    ],
+                    "hint": {
+                        "value": "The comment can have maximum 50 characters"
+                    },
+                    "value": "Prefield text",
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "text",
+                    "name": "DOLARRS",
+                    "placeholder": "Custom curency validation",
+                    "validation": [
+                        {
+                            "validator": "pattern",
+                            "validatorValue": "[1-9]d*(?:.d{0,2})?",
+                            "errorMessage": "patternMessage",
+                            "errorToken": "patternToken"
+                        }
+                    ],
+                    "hint": {
+                        "value": "This has a custom regex"
+                    },
+                    "width": 1
+                },
+                {
+                    "type": "email",
+                    "name": "EMAIL",
+                    "placeholder": "Email",
+                    "validation": [
+                        {
+                            "validator": "email",
+                            "errorMessage": "emailMessage",
+                            "errorToken": "emailToken"
+                        }
+                    ],
+                    "width": 1
+                },
+                {
+                    "type": "text",
+                    "name": "TEXT_VALIDATOR",
+                    "placeholder": "Text",
+                    "validation": [
+                        {
+                            "validator": "text",
+                            "errorMessage": "textError",
+                            "errorToken": "textToken"
+                        }
+                    ],
+                    "value": "1353",
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "number",
+                    "name": "NUMBER_VALIDATOR",
+                    "placeholder": "Number",
+                    "validation": [
+                        {
+                            "validator": "number",
+                            "errorMessage": "numberError",
+                            "errorToken": "numberToken"
+                        }
+                    ],
+                    "hint": {
+                        "value": "Only numbers are allowed"
+                    },
+                    "value": "1353",
+                    "width": 1
+                },
+                {
+                    "type": "password",
+                    "name": "PASSWORD_VALIDATOR",
+                    "placeholder": "Password",
+                    "validation": [
+                        {
+                            "validator": "password",
+                            "errorMessage": "passwordMessage",
+                            "errorToken": "passwordToken"
+                        }
+                    ],
+                    "width": 1
+                },
+                {
+                    "type": "number",
+                    "name": "NUMBER_MIN",
+                    "placeholder": "Min",
+                    "validation": [
+                        {
+                            "validator": "number",
+                            "errorMessage": "numberError",
+                            "errorToken": "numberToken"
+                        },
+                        {
+                            "validator": "minValue",
+                            "validatorValue": 10,
+                            "errorMessage": "maxValue",
+                            "errorToken": "maxValueToken"
+                        }
+                    ],
+                    "hint": {
+                        "value": "Min value is 10"
+                    },
+                    "width": 1
+                },
+                {
+                    "type": "number",
+                    "name": "NUMBER_MAX",
+                    "placeholder": "Max",
+                    "validation": [
+                        {
+                            "validator": "number",
+                            "errorMessage": "numberError",
+                            "errorToken": "numberToken"
+                        },
+                        {
+                            "validator": "maxValue",
+                            "validatorValue": 40,
+                            "errorMessage": "maxValue",
+                            "errorToken": "maxValueToken"
+                        }
+                    ],
+                    "hint": {
+                        "value": "Max value is 40"
+                    },
+                    "width": 1
+                }
+            ]
+        },
+        {
+            "elements": [
+                {
+                    "type": "number",
+                    "name": "INTEGER",
+                    "placeholder": "Integer",
+                    "validation": [
+                        {
+                            "validator": "integer",
+                            "errorMessage": "integerError",
+                            "errorToken": "integerToken"
+                        }
+                    ],
+                    "hint": {
+                        "value": "Only integer values"
+                    },
+                    "width": 2
+                },
+                {
+                    "type": "number",
+                    "name": "NUMBER_MAX_DECIMAL",
+                    "placeholder": "Max",
+                    "validation": [
+                        {
+                            "validator": "number",
+                            "errorMessage": "numberError",
+                            "errorToken": "numberToken"
+                        },
+                        {
+                            "validator": "maxDecimalLength",
+                            "validatorValue": 3,
+                            "errorMessage": "maxDecimalLength",
+                            "errorToken": "maxDecimalLengthToken"
+                        }
+                    ],
+                    "hint": {
+                        "value": "Only 3 decimals are allowed"
+                    },
+                    "width": 1
+                }
+            ]
+        }
+    ]
+}

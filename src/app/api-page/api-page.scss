@@ -1,0 +1,19 @@
+api-page {
+    > md-sidenav-container {
+        height: 100%;
+
+        components-menu {
+            display: inherit;
+            width: 18em;
+
+            .mat-nav-list {
+                padding-top: 0;
+            }
+        }
+    }
+
+    .app-sidenav-content {
+        height: 100%;
+        max-height: 100%;
+    }
+}

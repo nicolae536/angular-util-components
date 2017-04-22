@@ -1,0 +1,15 @@
+api-description-renderer {
+    .description-container {
+        padding: 1em;
+        background-color: #424242;
+        color: white;
+
+        .description-title {
+            font-size: 1.5em;
+        }
+
+        .description-body {
+            line-height: 1.3em;
+        }
+    }
+}
