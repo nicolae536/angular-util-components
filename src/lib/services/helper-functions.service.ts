@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
-import { isEqual, isEqualWith } from 'lodash';
-
-const _ = {
-    isEqualWith,
-    isEqual
-};
+import { LodashService } from './lodash.service';
 
 @Injectable()
 export class HelperFunctionsService {
 
+    constructor(private lodash: LodashService) {
+    }
+
     public isEqualNullCustomized(object: any, objectToCompare: any) {
-        return _.isEqualWith(object, objectToCompare, (value, valueToCompare) => {
+        return this.lodash.isEqualWith(object, objectToCompare, (value, valueToCompare) => {
             if (this.isNullOrUndefined(value) && this.isNullOrUndefined(valueToCompare)) {
                 return true;
             }
@@ -23,7 +21,7 @@ export class HelperFunctionsService {
         }
 
         for (let i = 0; i < array.length; i++) {
-            if (_.isEqual(array[i], item)) {
+            if (this.lodash.isEqual(array[i], item)) {
                 return i;
             }
         }

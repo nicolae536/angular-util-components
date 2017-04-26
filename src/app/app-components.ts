@@ -9,6 +9,7 @@ import { ApiClassRendererComponent } from './shared/api-class-renderer/api-class
 import { ApiListRendererComponent } from './shared/api-list-renderer/api-list-renderer.component';
 import { ApiDescriptionRendererComponent } from './shared/api-description-renderer/api-description-renderer.component';
 import { FormExampleComponent } from './shared/component-examples/form-example/form-example.component';
+import { GenericFormPageComponent } from './playground/generic-form/generic-form.page';
 
 export const APP_COMPONENTS = [
     HomePageComponent,
@@ -21,5 +22,6 @@ export const APP_COMPONENTS = [
     ApiClassRendererComponent,
     ApiListRendererComponent,
     FormExampleComponent,
-    ApiDescriptionRendererComponent
+    ApiDescriptionRendererComponent,
+    GenericFormPageComponent
 ];

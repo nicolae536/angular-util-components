@@ -1,14 +1,8 @@
 import { FormGroup } from '@angular/forms';
-import { IValidator } from './validation.helper';
-
-export interface FormDefinition {
-    name: string;
-    theme?: string;
-    rows: FormRow[];
-}
+import { IValidator } from './validators/validation.helper';
 
 export interface GenericFormMetadata extends FormGroupMetadata {
-    formDefinition: FormDefinition;
+    formDefinition: GenericFormDefinition;
 }
 
 export interface FormGroupMetadata {
@@ -16,43 +10,56 @@ export interface FormGroupMetadata {
     initialValue: Object;
 }
 
-export interface FormRow {
-    elements: FormElement[];
+// Form configuration interfaces
+export interface GenericFormDefinition {
+    name: string;
+    theme?: string;
+    groups: GenericFormGroup[];
+    linkResolver?: LinkResolverInterface;
+    // rows: GenericFormRow[];
+}
+
+export interface GenericFormGroup {
+    name: string;
+    collapsible?: ICollapsibleGroup;
+    rows: GenericFormRow[];
+    validation?: IValidator[];
+    linkResolver?: LinkResolverInterface;
+}
+
+export interface ICollapsibleGroup {
+    iconUncollapsed: string;
+    iconCollapsed: string;
+}
+
+export interface GenericFormRow {
+    elements: GenericFormElement[];
     class?: string;
 }
 
-export interface FormElement extends DateTime {
+export interface GenericFormElement {
     type: string;
     name: string;
-    buttonType?: string;
     placeholder: string;
     class: string;
-    icon?: string;
     iconType: string; // prefix, suffinx, in-placeholder
-    position?: string;
+    width: number;
+    hint: IHint; // if the hint is used inside autocomplete component {statesMessages} will be used as hint values
+
+    // @Optional Propertyes
+    icon?: string;
     value?: string;
     disabled?: boolean;
-    width: number;
     validation?: IValidator[];
+    linkResolver?: LinkResolverInterface;
+
+    // @Specific Propertyes
+    buttonType?: string; // for buttons
     radioButtons?: IRadioButton[];
-    hint: IHint; // if the hint is used inside autocomplete component {statesMessages} will be used as hint values
-    runtimelinks?: BaseLinkRealation[]; // for select, autocomplete a link is interpreted when select event is triggered
-    staticLinks: StaticLinkRelation[];
-    visibleField?: string; // for multiselect
-
-    config?: any;
-
+    customFieldConfiguration?: any;
     valueField?: string; // for select
     dataSource?: any[]; // for select
     displayFields: any[]; // for select
-};
-
-export interface DateTime {
-    minDateValue: any;
-    maxDateValue: any;
-    minDateTime?: any;
-    maxDateTime?: any;
-    format?: string;
 }
 
 export interface IHint {
@@ -60,10 +67,17 @@ export interface IHint {
     value: string;
 }
 
+export interface LinkResolverInterface {
+    linkName: string;
+    configuration: any;
+    lockResource: boolean; // if the resolver should listen to other links while this link is resolved
+}
+
 export interface IRadioButton {
     checked: boolean;
     placeholder: string;
     class: string;
+    color: string;
 }
 
 export interface BaseLinkRealation {
@@ -83,4 +97,4 @@ export class LinkType {
     public static RESET = 'RESET';
     public static COPY_VALUE = 'COPY_VALUE';
     public static DATA_INHERITANCE = 'DATA_INHERITANCE';
-};
+}

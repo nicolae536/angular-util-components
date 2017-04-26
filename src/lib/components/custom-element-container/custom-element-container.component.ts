@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output, OnDestroy } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { FormElement } from '../generic-form/generic-form-elemets.interfaces';
+import { GenericFormElement } from '../generic-form/generic-form-elemets.interfaces';
 
 @Component({
     selector: 'ngt-custom-element-container',
@@ -14,7 +14,7 @@ import { FormElement } from '../generic-form/generic-form-elemets.interfaces';
     ],
 })
 export class CustomElementContainerComponent implements OnDestroy, ControlValueAccessor {
-    @Input() public field: FormElement;
+    @Input() public field: GenericFormElement;
     @Input() public customComponentRef;
     @Output() public onSelect = new EventEmitter();
 

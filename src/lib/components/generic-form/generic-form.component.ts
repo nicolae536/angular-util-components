@@ -1,25 +1,16 @@
-import {
-    Component,
-    EventEmitter,
-    Input,
-    OnDestroy,
-    Output,
-    ViewChild,
-    ViewEncapsulation
-} from '@angular/core';
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, Component, EventEmitter, Input, OnDestroy, Output, style, transition, trigger, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Subscription } from 'rxjs/Subscription';
 
 import { HelperFunctionsService } from './../../services/helper-functions.service';
 import { Dictionary } from './../../models/generic-types';
 import { IBackend } from './../../services/searching.service';
 
 import { GenericFormService } from './generic-form.service';
-import { FormDefinition, FormElement } from './generic-form-elemets.interfaces';
+import { GenericFormDefinition, GenericFormElement } from './generic-form-elemets.interfaces';
 import { ValidatorHelper } from './validation.helper';
+import { GENERIC_FORM_PROVIDERS } from './generic-form.providers';
 
 // TODO add style to build
 @Component({
@@ -29,14 +20,14 @@ import { ValidatorHelper } from './validation.helper';
         './generic-form.scss'
     ],
     encapsulation: ViewEncapsulation.None,
-    providers: [GenericFormService],
+    providers: [GenericFormService, ...GENERIC_FORM_PROVIDERS],
     animations: [
         trigger('fieldHintAnimation', [
-            transition(':enter', [
+            transition('void => *', [
                 style({transform: 'translateY(-100%)'}),
                 animate('100ms ease-in', style({transform: 'translateY(0)'}))
             ]),
-            transition(':leave', [
+            transition('* => void', [
                 style({transform: 'translateY(-100%)'}),
                 animate('100ms ease-out')
             ])
@@ -55,7 +46,7 @@ export class GenericFormComponent implements OnDestroy {
     };
 
     @Input()
-    public set formDefinition(definition: FormDefinition) {
+    public set formDefinition(definition: GenericFormDefinition) {
         this.setFormDefinition(definition);
     };
 
@@ -68,12 +59,11 @@ export class GenericFormComponent implements OnDestroy {
 
     @ViewChild('customComponent') public customComponent;
 
-    public genericFormDefinition: FormDefinition = null;
+    public genericFormDefinition: GenericFormDefinition = null;
     public ngFormGroup: FormGroup = null;
     public formButtonDisabledState: boolean = true;
     public formIsNotChanged: boolean = true;
 
-    private staticLinksRelations: Subscription[] = [];
     private onFormDataChange: BehaviorSubject<Object> = new BehaviorSubject<Object>(null);
 
     /**
@@ -93,9 +83,9 @@ export class GenericFormComponent implements OnDestroy {
      * the ng form metadata and sets the form to the last value
      * provided in formValue input this function will
      * set a {Subscription} on ngFormGroup.valueChanges
-     * @param {FormDefinition} definition - a specific set of rules which generates a ngForm
+     * @param {GenericFormDefinition} definition - a specific set of rules which generates a ngForm
      */
-    public setFormDefinition(definition: FormDefinition) {
+    public setFormDefinition(definition: GenericFormDefinition) {
         if (this.helper.isNullOrUndefined(definition)) {
             return;
         }
@@ -108,14 +98,14 @@ export class GenericFormComponent implements OnDestroy {
         }
         this.setValueChangeSubscription();
         this.setFormValue(this.onFormDataChange.getValue());
-        this.removeStaticLinksBetweenFields();
-        this.staticLinksRelations =
-            this.genericformService.rezolveFormStaticLinks(this.genericFormDefinition, this.ngFormGroup);
+        setTimeout(() => {
+            this.genericformService.startLinkWatcher();
+        });
     }
 
     /**
      * @desc setValueChangeSubscription - will set a {Subscription} on ngFormGroup.valueChanges
-     * @param {FormDefinition} definition - a specific set of rules which generates a ngForm
+     * @param {GenericFormDefinition} definition - a specific set of rules which generates a ngForm
      */
     public setValueChangeSubscription() {
         this.ngFormGroup.valueChanges
@@ -139,10 +129,10 @@ export class GenericFormComponent implements OnDestroy {
             return;
         }
 
-        this.removeStaticLinksBetweenFields();
+        // this.removeStaticLinksBetweenFields();
         this.ngFormGroup.setValue(value);
         setTimeout(() => {
-            this.staticLinksRelations = this.genericformService.rezolveFormStaticLinks(this.genericFormDefinition, this.ngFormGroup);
+            // this.staticLinksRelations = this.genericformService.rezolveFormStaticLinks(this.genericFormDefinition, this.ngFormGroup);
         });
     }
 
@@ -156,7 +146,7 @@ export class GenericFormComponent implements OnDestroy {
             return;
         }
 
-        this.genericformService.resetFormToInitialState(this.genericFormDefinition, this.ngFormGroup);
+        // this.genericformService.resetFormToInitialState(this.genericFormDefinition, this.ngFormGroup);
         this.resetFormValue(value);
         this.formIsNotChanged = true;
     }
@@ -172,24 +162,66 @@ export class GenericFormComponent implements OnDestroy {
             return;
         }
         // first remove all links to not trigger unexpected behavior
-        this.removeStaticLinksBetweenFields();
+        // this.removeStaticLinksBetweenFields();
 
         // If null is passed to the reset function this will fail
         this.ngFormGroup.reset(this.helper.isNullOrUndefined(value) ? undefined : value);
 
-        setTimeout(() => {
-            this.staticLinksRelations = this.genericformService.rezolveFormStaticLinks(this.genericFormDefinition, this.ngFormGroup);
-        });
+        // setTimeout(() => {
+        //     this.staticLinksRelations = this.genericformService.rezolveFormStaticLinks(this.genericFormDefinition, this.ngFormGroup);
+        // });
     }
 
     /**
      * @desc removeLinksBetweenFields - removes the links between the fields
      */
-    public removeStaticLinksBetweenFields() {
-        this.staticLinksRelations.forEach((v) => {
-            v.unsubscribe();
-        });
-        this.staticLinksRelations = [];
+    // public removeStaticLinksBetweenFields() {
+    //     // this.staticLinksRelations.forEach((v) => {
+    //     //     v.unsubscribe();
+    //     // });
+    //     // this.staticLinksRelations = [];
+    // }
+
+    /**
+     * @viewCallback
+     * @desc select - TODO implement a select behavior
+     * @param {} event
+     */
+    public select(field: GenericFormElement, selectedOption: Object) {
+        // if (!field || !field.runtimelinks) {
+        //     return;
+        // }
+        //
+        // field.runtimelinks.forEach((relation) => {
+        //     if (!this.ngFormGroup.controls[relation.control]) {
+        //         return;
+        //     }
+        //
+        //     if (relation.executeInSafeContext) {
+        //         // The relation might trigger cascade changes and we don't want that
+        //         this.removeStaticLinksBetweenFields();
+        //     }
+        //
+        //     // this.ngFormGroup.controls[relation.control].validator =
+        //     //     ValidatorHelper.getValidators(this.ngFormGroup, relation.validation);
+        //
+        //     if (Array.isArray(relation.disabled)) {
+        //         (<any[]> relation.disabled).indexOf(selectedOption[field.valueField]) !== -1
+        //             ? this.ngFormGroup.controls[relation.control].disable()
+        //             : this.ngFormGroup.controls[relation.control].enable();
+        //     }
+        //
+        //     if (relation.fieldName && (selectedOption instanceof Object) && (selectedOption.hasOwnProperty(relation.fieldName))) {
+        //         this.ngFormGroup.controls[relation.control].setValue(selectedOption[relation.fieldName]);
+        //     }
+        //
+        //     if (relation.executeInSafeContext) {
+        //         // Rebuild linked state so the next relation will have to deactivate it if needed
+        //         this.staticLinksRelations = this.genericformService.rezolveFormStaticLinks(this.genericFormDefinition, this.ngFormGroup);
+        //     }
+        // });
+        //
+        // this.ngFormGroup.updateValueAndValidity();
     }
 
     /**
@@ -197,49 +229,7 @@ export class GenericFormComponent implements OnDestroy {
      * @desc select - TODO implement a select behavior
      * @param {} event
      */
-    public select(field: FormElement, selectedOption: Object) {
-        if (!field || !field.runtimelinks) {
-            return;
-        }
-
-        field.runtimelinks.forEach((relation) => {
-            if (!this.ngFormGroup.controls[relation.control]) {
-                return;
-            }
-
-            if (relation.executeInSafeContext) {
-                // The relation might trigger cascade changes and we don't want that
-                this.removeStaticLinksBetweenFields();
-            }
-
-            this.ngFormGroup.controls[relation.control].validator =
-                ValidatorHelper.getValidators(this.ngFormGroup, relation.validation);
-
-            if (Array.isArray(relation.disabled)) {
-                (<any[]> relation.disabled).indexOf(selectedOption[field.valueField]) !== -1
-                    ? this.ngFormGroup.controls[relation.control].disable()
-                    : this.ngFormGroup.controls[relation.control].enable();
-            }
-
-            if (relation.fieldName && (selectedOption instanceof Object) && (selectedOption.hasOwnProperty(relation.fieldName))) {
-                this.ngFormGroup.controls[relation.control].setValue(selectedOption[relation.fieldName]);
-            }
-
-            if (relation.executeInSafeContext) {
-                // Rebuild linked state so the next relation will have to deactivate it if needed
-                this.staticLinksRelations = this.genericformService.rezolveFormStaticLinks(this.genericFormDefinition, this.ngFormGroup);
-            }
-        });
-
-        this.ngFormGroup.updateValueAndValidity();
-    }
-
-    /**
-     * @viewCallback
-     * @desc select - TODO implement a select behavior
-     * @param {} event
-     */
-    public getDisplayField(field: FormElement, option: Object) {
+    public getDisplayField(field: GenericFormElement, option: Object) {
         let displayValue = '';
         let i = 0;
 
@@ -272,14 +262,14 @@ export class GenericFormComponent implements OnDestroy {
     }
 
     public ngOnDestroy() {
-        this.removeStaticLinksBetweenFields();
+        // this.removeStaticLinksBetweenFields();
     }
 
-    private setInputAsTouched(field: FormElement) {
+    private setInputAsTouched(field: GenericFormElement) {
         this.ngFormGroup.controls[field.name].markAsTouched();
     }
 
-    private getTranslatedError(field: FormElement, control: FormControl) {
+    private getTranslatedError(field: GenericFormElement, control: FormControl) {
         if (control && control.errors && control.errors['errorToken']) {
             return this.translate(control.errors['errorToken']);
         }
@@ -325,9 +315,7 @@ export class GenericFormComponent implements OnDestroy {
      */
     private setDataChangeSubscription() {
         this.onFormDataChange
-            .filter((v) => {
-                return !this.helper.isNullOrUndefined(v);
-            })
+            .filter((v) => !this.helper.isNullOrUndefined(v))
             .debounceTime(0)
             .distinctUntilChanged(this.helper.isEqualNullCustomized.bind(this.helper))
             .subscribe(this.setFormValue.bind(this));

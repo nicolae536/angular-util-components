@@ -330,4 +330,4 @@ module.exports = function (env) {
     }
 
   });
-}
+};

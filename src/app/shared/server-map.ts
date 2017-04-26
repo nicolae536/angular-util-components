@@ -22,6 +22,7 @@ export const SERVER_MAP = {
         definitionExample: dataFoler + '/form-definitions/generic-form-definition-example.json',
         validationExample: dataFoler + '/form-definitions/generic-form-validation-example.json',
         staticLinksExample: dataFoler + '/form-definitions/generic-form-static-links-example.json',
-        runtimeLinksExample: dataFoler + '/form-definitions/generic-form-runtime-links-example.json'
+        runtimeLinksExample: dataFoler + '/form-definitions/generic-form-runtime-links-example.json',
+        newFormExemple: dataFoler + '/form-definitions/new-form-api-example.json'
     }
 };

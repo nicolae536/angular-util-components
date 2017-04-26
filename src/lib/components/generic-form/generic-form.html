@@ -25,11 +25,11 @@
                     <span mdSuffix>
 						<md-icon *ngIf="field?.iconType === 'suffix'">field.icon</md-icon>
 					</span>
-                    <md-hint [@fieldHintAnimation]
+                    <md-hint 
                              *ngIf="field?.hint && !ngFormGroup?.controls[field?.name]?.errors" [align]="field?.hint?.align || 'start'">
                         {{field.hint.value}}
                     </md-hint>
-                    <md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field?.name]?.errors" [align]="'start'">
+                    <md-hint  class="error-message" *ngIf="ngFormGroup?.controls[field?.name]?.errors" [align]="'start'">
                         {{getTranslatedError(field, ngFormGroup.controls[field?.name])}}
                     </md-hint>
                 </md-input-container>
@@ -50,11 +50,11 @@
                     <span mdSuffix>
 						<md-icon *ngIf="field?.iconType === 'suffix'">field.icon</md-icon>
 					</span>
-                    <md-hint [@fieldHintAnimation]
+                    <md-hint 
                              *ngIf="field?.hint && !ngFormGroup?.controls[field?.name]?.errors" [align]="field?.hint?.align || 'start'">
                         {{field.hint.value}}
                     </md-hint>
-                    <md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field?.name]?.errors" [align]="'start'">
+                    <md-hint  class="error-message" *ngIf="ngFormGroup?.controls[field?.name]?.errors" [align]="'start'">
                         {{getTranslatedError(field, ngFormGroup.controls[field?.name])}}
                     </md-hint>
                 </md-input-container>
@@ -75,11 +75,11 @@
                     <span mdSuffix>
 						<md-icon *ngIf="field?.iconType === 'suffix'">field.icon</md-icon>
 					</span>
-                    <md-hint [@fieldHintAnimation]
+                    <md-hint 
                              *ngIf="field?.hint && !ngFormGroup?.controls[field?.name]?.errors" [align]="field?.hint?.align || 'start'">
                         {{field.hint.value}}
                     </md-hint>
-                    <md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field?.name]?.errors" [align]="'start'">
+                    <md-hint  class="error-message" *ngIf="ngFormGroup?.controls[field?.name]?.errors" [align]="'start'">
                         {{getTranslatedError(field, ngFormGroup.controls[field?.name])}}
                     </md-hint>
                 </md-input-container>
@@ -100,11 +100,11 @@
                     <span mdSuffix>
 						<md-icon *ngIf="field?.iconType === 'suffix'">field.icon</md-icon>
 					</span>
-                    <md-hint [@fieldHintAnimation]
+                    <md-hint 
                              *ngIf="field?.hint && !ngFormGroup?.controls[field?.name]?.errors" [align]="field?.hint?.align || 'start'">
                         {{field.hint.value}}
                     </md-hint>
-                    <md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field?.name]?.errors" [align]="'start'">
+                    <md-hint  class="error-message" *ngIf="ngFormGroup?.controls[field?.name]?.errors" [align]="'start'">
                         {{getTranslatedError(field, ngFormGroup.controls[field?.name])}}
                     </md-hint>
                 </md-input-container>
@@ -125,11 +125,11 @@
                     <span mdSuffix>
 						<md-icon *ngIf="field?.iconType === 'suffix'">field.icon</md-icon>
 					</span>
-                    <md-hint [@fieldHintAnimation]
+                    <md-hint 
                              *ngIf="field?.hint && !ngFormGroup?.controls[field?.name]?.errors" [align]="field?.hint?.align || 'start'">
                         {{field.hint.value}}
                     </md-hint>
-                    <md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field?.name]?.errors" [align]="'start'">
+                    <md-hint  class="error-message" *ngIf="ngFormGroup?.controls[field?.name]?.errors" [align]="'start'">
                         {{getTranslatedError(field, ngFormGroup.controls[field?.name])}}
                     </md-hint>
                 </md-input-container>
@@ -144,7 +144,7 @@
                         [class.backend-error]="ngFormGroup?.controls[field.name]?.errors">
                     {{field.placeholder}}
                 </md-checkbox>
-                <md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">
+                <md-hint  class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">
                     {{getTranslatedError(field, ngFormGroup.controls[field.name])}}
                 </md-hint>
             </ng-template>
@@ -159,7 +159,7 @@
                             {{radio.placeholder}}
                         </md-radio-button>
                     </md-radio-group>
-                    <md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">
+                    <md-hint  class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">
                         {{getTranslatedError(field, ngFormGroup.controls[field.name])}}
                     </md-hint>
                 </div>
@@ -174,7 +174,7 @@
                         [class.backend-error]="ngFormGroup?.controls[field.name]?.errors">
                     {{field.placeholder}}
                 </md-slide-toggle>
-                <md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">
+                <md-hint  class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">
                     {{getTranslatedError(field, ngFormGroup.controls[field.name])}}
                 </md-hint>
             </ng-template>
@@ -194,12 +194,12 @@
                     <span mdSuffix>
 						<md-icon *ngIf="field?.iconType === 'suffix'">field.icon</md-icon>
 					</span>
-                    <md-hint [@fieldHintAnimation]
+                    <md-hint 
                              *ngIf="field?.hint && !ngFormGroup?.controls[field?.name]?.errors"
                              [align]="field?.hint?.align || 'start'">
                         {{field.hint.value}}
                     </md-hint>
-                    <md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field?.name]?.errors" [align]="'start'">
+                    <md-hint  class="error-message" *ngIf="ngFormGroup?.controls[field?.name]?.errors" [align]="'start'">
                         {{getTranslatedError(field, ngFormGroup.controls[field?.name])}}
                     </md-hint>
                 </md-input-container>
@@ -217,10 +217,10 @@
                             {{ getDisplayField(field, option) }}
                         </md-option>
                     </md-select>
-                    <md-hint [@fieldHintAnimation] *ngIf="field.hint && !ngFormGroup?.controls[field.name]?.errors" [align]="field.hint.align || 'start'">
+                    <md-hint  *ngIf="field.hint && !ngFormGroup?.controls[field.name]?.errors" [align]="field.hint.align || 'start'">
                         {{field.hint.value}}
                     </md-hint>
-                    <md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">
+                    <md-hint  class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">
                         {{getTranslatedError(field, ngFormGroup.controls[field.name])}}
                     </md-hint>
                 </div>
@@ -238,7 +238,7 @@
                                   <!--[formControlName]="field.name"-->
                                   <!--(onSelectionChange)="select(field, $event)">-->
                     <!--&lt;!&ndash;TODO hint message configuration to autocomplete configuration&ndash;&gt;-->
-                    <!--<span ngt-hint-container [@fieldHintAnimation] class="error-message">-->
+                    <!--<span ngt-hint-container  class="error-message">-->
                         <!--{{getTranslatedError(field, ngFormGroup.controls[field.name])}}</span>-->
                 <!--</ngt-autocomplete>-->
             <!--</ng-template>-->
@@ -256,10 +256,10 @@
                                      <!--(blur)="setInputAsTouched(field)"-->
                                      <!--(change)="select(field, $event)">-->
                     <!--</md2-multiselect>-->
-                    <!--<md-hint [@fieldHintAnimation] *ngIf="field.hint && !ngFormGroup?.controls[field.name]?.errors" [align]="field.hint.align || 'start'">-->
+                    <!--<md-hint  *ngIf="field.hint && !ngFormGroup?.controls[field.name]?.errors" [align]="field.hint.align || 'start'">-->
                         <!--{{field.hint.value}}-->
                     <!--</md-hint>-->
-                    <!--<md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">-->
+                    <!--<md-hint  class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">-->
                         <!--{{getTranslatedError(field, ngFormGroup.controls[field.name])}}-->
                     <!--</md-hint>-->
                 <!--</div>-->
@@ -280,10 +280,10 @@
                             <!--[format]="field.format"-->
                             <!--[formControlName]="field.name">-->
                     <!--</md2-datepicker>-->
-                    <!--<md-hint [@fieldHintAnimation] *ngIf="field.hint && !ngFormGroup?.controls[field.name]?.errors" [align]="field.hint.align || 'start'">-->
+                    <!--<md-hint  *ngIf="field.hint && !ngFormGroup?.controls[field.name]?.errors" [align]="field.hint.align || 'start'">-->
                         <!--{{field.hint.value}}-->
                     <!--</md-hint>-->
-                    <!--<md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">-->
+                    <!--<md-hint  class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">-->
                         <!--{{getTranslatedError(field, ngFormGroup.controls[field.name])}}-->
                     <!--</md-hint>-->
                 <!--</div>-->
@@ -301,10 +301,10 @@
                             <!--[format]="field.format"-->
                             <!--[formControlName]="field.name">-->
                     <!--</md2-datepicker>-->
-                    <!--<md-hint [@fieldHintAnimation] *ngIf="field.hint && !ngFormGroup?.controls[field.name]?.errors" [align]="field.hint.align || 'start'">-->
+                    <!--<md-hint  *ngIf="field.hint && !ngFormGroup?.controls[field.name]?.errors" [align]="field.hint.align || 'start'">-->
                         <!--{{field.hint.value}}-->
                     <!--</md-hint>-->
-                    <!--<md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">-->
+                    <!--<md-hint  class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">-->
                         <!--{{getTranslatedError(field, ngFormGroup.controls[field.name])}}-->
                     <!--</md-hint>-->
                 <!--</div>-->
@@ -322,10 +322,10 @@
                             <!--[format]="field.format"-->
                             <!--[formControlName]="field.name">-->
                     <!--</md2-datepicker>-->
-                    <!--<md-hint [@fieldHintAnimation] *ngIf="field.hint && !ngFormGroup?.controls[field.name]?.errors" [align]="field.hint.align || 'start'">-->
+                    <!--<md-hint  *ngIf="field.hint && !ngFormGroup?.controls[field.name]?.errors" [align]="field.hint.align || 'start'">-->
                         <!--{{field.hint.value}}-->
                     <!--</md-hint>-->
-                    <!--<md-hint [@fieldHintAnimation] class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">-->
+                    <!--<md-hint  class="error-message" *ngIf="ngFormGroup?.controls[field.name]?.errors" [align]="'start'">-->
                         <!--{{getTranslatedError(field, ngFormGroup.controls[field.name])}}-->
                     <!--</md-hint>-->
                 <!--</div>-->

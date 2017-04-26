@@ -1,8 +1,9 @@
+import { Routes } from '@angular/router';
+
 import { GenericLayoutComponent } from './shared/generic-layout/generic-layout.component';
 import { ApiPageComponent } from './api-page';
 import { HomePageComponent } from './home-page/home-page.component';
-
-import { Routes } from '@angular/router';
+import { GenericFormPageComponent } from './playground/generic-form/generic-form.page';
 
 export const APP_ROUTES: Routes = [
     {
@@ -18,5 +19,9 @@ export const APP_ROUTES: Routes = [
                 component: GenericLayoutComponent,
             }
         ]
+    },
+    {
+        path: 'playground/form-play',
+        component: GenericFormPageComponent,
     }
 ];

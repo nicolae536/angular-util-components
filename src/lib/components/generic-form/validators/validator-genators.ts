@@ -3,6 +3,12 @@ import { AbstractControl, ValidatorFn } from '@angular/forms';
 /* Validations class*/
 export class ValidatorGenerator {
 
+    public static getEmptyValidationFn(): ValidatorFn {
+        return (c: AbstractControl) => {
+            return null;
+        };
+    }
+
     public static getAngularFormValidationFn(validationFunction: ValidationFn, eToken: string): ValidatorFn {
         return (c: AbstractControl) => {
             const validationResult = validationFunction(c);
